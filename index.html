@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>116 碩考報名時程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* 版面：上方「下一個動作」橫條 → 時間軸（報名區間＋筆試日） → 各校卡片 */
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --fg: #1c2230;
+  --muted: #5d6676;
+  --line: #dde1e8;
+  --accent: #1f4fd1;
+  --reg: #3d6ee8;
+  --exam: #c8372d;
+  --ok: #1d7f4e;
+  --ok-bg: #e2f3ea;
+  --plan: #9a6500;
+  --plan-bg: #fbefd6;
+  --none: #5d6676;
+  --none-bg: #eceef2;
+  --today: #c8372d;
+  --font-display: "Noto Serif TC", "Songti TC", serif;
+  --font-body: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12151c; --surface: #1a1f29; --fg: #e6e9ef; --muted: #9aa3b2; --line: #2c3341;
+    --accent: #7ea2ff; --reg: #6f95ff; --exam: #ff7a6e;
+    --ok: #6fd3a0; --ok-bg: #173527; --plan: #f2c46b; --plan-bg: #3a2e14; --none: #9aa3b2; --none-bg: #262c38;
+    --today: #ff7a6e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12151c; --surface: #1a1f29; --fg: #e6e9ef; --muted: #9aa3b2; --line: #2c3341;
+  --accent: #7ea2ff; --reg: #6f95ff; --exam: #ff7a6e;
+  --ok: #6fd3a0; --ok-bg: #173527; --plan: #f2c46b; --plan-bg: #3a2e14; --none: #9aa3b2; --none-bg: #262c38;
+  --today: #ff7a6e; color-scheme: dark;
+}
+body { margin: 0;
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 48px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 28px; }
+header { display: grid; gap: 6px; }
+h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0; text-wrap: balance; letter-spacing: .02em; }
+.sub { color: var(--muted); margin: 0; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+h2 { font-family: var(--font-display); font-size: 1.25rem; margin: 0 0 12px; }
+
+/* 下一個動作 */
+.next { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: baseline; }
+.next .label { font-size: .78rem; letter-spacing: .12em; color: var(--muted); }
+.next .what { font-weight: 700; font-size: 1.1rem; }
+.next .days { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 600; color: var(--accent); }
+.next-item { display: grid; gap: 2px; min-width: 0; }
+
+/* 時間軸 */
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .85rem; color: var(--muted); margin-bottom: 10px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw-reg { width: 22px; height: 8px; border-radius: 4px; background: var(--reg); }
+.sw-exam { width: 10px; height: 10px; transform: rotate(45deg); background: var(--exam); }
+.sw-ann { width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--accent); }
+.tl-scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.tl { min-width: 720px; position: relative; padding: 8px 14px 14px; }
+.tl-row { display: grid; grid-template-columns: 112px 1fr; align-items: center; height: 34px; }
+.tl-name { font-weight: 500; font-size: .9rem; white-space: nowrap; }
+.tl-track { position: relative; height: 100%; }
+.tl-head .tl-track { height: 26px; }
+.month { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--line); }
+.month-label { position: absolute; top: 4px; white-space: nowrap; font-size: .75rem; color: var(--muted); padding-left: 5px; font-family: var(--font-mono); }
+.bar { position: absolute; top: 13px; height: 8px; border-radius: 4px; background: var(--reg); }
+.dia { position: absolute; top: 12px; width: 10px; height: 10px; margin-left: -5px; transform: rotate(45deg); background: var(--exam); }
+.ann { position: absolute; top: 12px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; border: 2px solid var(--accent); background: var(--surface); box-sizing: border-box; }
+.tbd { position: absolute; left: 0; top: 9px; font-size: .78rem; color: var(--muted); }
+.today { position: absolute; top: 0; bottom: 0; width: 0; border-left: 2px dashed var(--today); }
+.today-label { position: absolute; top: -2px; font-size: .72rem; color: var(--today); font-family: var(--font-mono); transform: translateX(4px); white-space: nowrap; }
+.tl-grid { position: absolute; top: 8px; bottom: 14px; left: 126px; right: 14px; pointer-events: none; }
+
+/* 卡片 */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.card h3 { margin: 0; font-size: 1.1rem; }
+.chip { font-size: .75rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; white-space: nowrap; letter-spacing: .04em; }
+.chip.out { color: var(--ok); background: var(--ok-bg); }
+.chip.plan { color: var(--plan); background: var(--plan-bg); }
+.chip.none { color: var(--none); background: var(--none-bg); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+dl { margin: 0; display: grid; grid-template-columns: 5.5em 1fr; gap: 4px 10px; font-size: .92rem; }
+dt { color: var(--muted); }
+dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; min-width: 0; }
+dd.txt { font-family: var(--font-body); }
+.note { font-size: .88rem; color: var(--muted); margin: 0; }
+.note b { color: var(--fg); font-weight: 500; }
+.card a { color: var(--accent); font-size: .88rem; text-decoration: none; }
+.card a:hover, .card a:focus-visible { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+footer { font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+@media (max-width: 480px) { dl { grid-template-columns: 5em 1fr; } .next .days { font-size: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>116 學年度碩士班考試入學時程</h1>
+    <p class="sub">四大、四中、台科、北科的一般考試（非甄試）。每天早上 9 點自動檢查各校官網。最後檢查：<span class="mono" id="checked">讀取中</span></p>
+  </header>
+
+  <section class="next" id="next" aria-label="接下來的事"></section>
+
+  <section>
+    <h2>時間軸</h2>
+    <div class="legend">
+      <span><i class="sw-ann"></i>簡章公告</span>
+      <span><i class="sw-reg"></i>網路報名期間</span>
+      <span><i class="sw-exam"></i>筆試</span>
+    </div>
+    <div class="tl-scroll"><div class="tl" id="tl"></div></div>
+  </section>
+
+  <section>
+    <h2>各校細節</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <footer>日期以各校官方簡章為準。標「自動偵測」的學校是程式偵測到簡章後自動填入，標「日期待確認」表示程式沒能從簡章完整抓到日期。「預定」是學校自己公布的預定日程，正式簡章出來後可能微調；「未公布」的學校只列往年參考，不代表今年日期。</footer>
+</div>
+
+<script>
+// 資料在 data.json，由 GitHub Actions 每天跑 check.py 更新
+fetch("data.json?t=" + Date.now()).then(r => r.json()).then(({ checked_at, schools }) => {
+  document.getElementById("checked").textContent = checked_at.slice(0, 16).replace("T", " ");
+const STATUS = { out: ["簡章已公告", "out"], plan: ["官方預定", "plan"], none: ["尚未公布", "none"] };
+const START = new Date("2026-10-15"), END = new Date("2027-03-01");
+const DAY = 86400000;
+const pct = d => ((new Date(d) - START) / (END - START)) * 100;
+const md = d => { const x = new Date(d); return `${x.getMonth() + 1}/${x.getDate()}`; };
+const WD = "日一二三四五六";
+const mdw = d => `${md(d)}（${WD[new Date(d).getDay()]}）`;
+
+// 今天（以台灣日期為準，只取年月日）
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+const todayISO = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+// 時間軸
+const tl = document.getElementById("tl");
+let html = `<div class="tl-row tl-head"><div></div><div class="tl-track">`;
+for (let m = new Date(2026, 10, 1); m < END; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) {
+  html += `<span class="month-label" style="left:${pct(m)}%">${m.getMonth() + 1} 月</span>`;
+}
+html += `</div></div>`;
+for (const s of schools) {
+  html += `<div class="tl-row"><div class="tl-name">${s.name}</div><div class="tl-track">`;
+  if (s.announce) html += `<i class="ann" style="left:${pct(s.announce)}%" title="簡章公告 ${md(s.announce)}"></i>`;
+  if (s.reg) {
+    const l = pct(s.reg[0]), w = Math.max(pct(new Date(s.reg[1]).getTime() + DAY) - l, 0.6);
+    html += `<i class="bar" style="left:${l}%;width:${w}%" title="報名 ${md(s.reg[0])}–${md(s.reg[1])}"></i>`;
+  }
+  if (s.exam) for (const e of s.exam) html += `<i class="dia" style="left:${pct(e)}%" title="筆試 ${md(e)}"></i>`;
+  if (!s.reg && !s.exam) html += `<span class="tbd" style="left:${s.announceText ? "3%" : "0"}">${s.announceText ? "簡章 " + s.announceText : "日期未公布"}</span>`;
+  html += `</div></div>`;
+}
+let grid = "";
+for (let m = new Date(2026, 10, 1); m < END; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) grid += `<span class="month" style="left:${pct(m)}%"></span>`;
+if (today >= START && today <= END) grid += `<span class="today" style="left:${pct(todayISO)}%"><span class="today-label">今天 ${md(todayISO)}</span></span>`;
+tl.innerHTML = html + `<div class="tl-grid">${grid}</div>`;
+// 格線容器跟名稱欄寬度對齊
+const gridEl = tl.querySelector(".tl-grid");
+gridEl.style.left = (14 + 112) + "px";
+
+// 卡片
+document.getElementById("cards").innerHTML = schools.map(s => {
+  const [label, cls] = STATUS[s.status];
+  const rows = [];
+  if (s.announce) rows.push(["簡章公告", mdw(s.announce) + (s.annNote || ""), false]);
+  else if (s.announceText) rows.push(["簡章公告", "預定 " + s.announceText, true]);
+  rows.push(["網路報名", s.reg ? `${mdw(s.reg[0])} – ${mdw(s.reg[1])}` : "未公布", !s.reg]);
+  rows.push(["筆試", s.exam ? s.exam.map(mdw).join("、") : "未公布", !s.exam]);
+  if (s.release) rows.push(["放榜", s.release, true]);
+  return `<article class="card">
+    <div class="card-top"><h3>${s.name}</h3><span class="chips">${s.auto ? '<span class="chip plan">自動偵測</span>' : ""}${s.datesUnverified ? '<span class="chip none">日期待確認</span>' : ""}<span class="chip ${cls}">${label}</span></span></div>
+    <dl>${rows.map(([k, v, t]) => `<dt>${k}</dt><dd${t ? ' class="txt"' : ""}>${v}</dd>`).join("")}</dl>
+    <p class="note">${s.note}</p>
+    <a href="${s.link}" target="_blank" rel="noopener">官方頁面 ↗</a>
+  </article>`;
+}).join("");
+
+// 接下來的事：未來最近的三個日期
+const events = [];
+for (const s of schools) {
+  if (s.announce) events.push([s.announce, `${s.name} 簡章公告`]);
+  if (s.reg) { events.push([s.reg[0], `${s.name} 開放報名`]); events.push([s.reg[1], `${s.name} 報名截止`]); }
+  if (s.exam) for (const e of s.exam) events.push([e, `${s.name} 筆試`]);
+}
+const upcoming = events.filter(([d]) => new Date(d) >= today).sort((a, b) => new Date(a[0]) - new Date(b[0])).slice(0, 3);
+document.getElementById("next").innerHTML = upcoming.map(([d, w]) => {
+  const days = Math.round((new Date(d) - today) / DAY);
+  return `<div class="next-item"><span class="label">${mdw(d)}</span><span class="what">${w}</span><span class="days">${days === 0 ? "今天" : days + " 天"}</span></div>`;
+}).join("") || `<div class="next-item"><span class="what">目前沒有排定的日期</span></div>`;
+
+}).catch(() => {
+  document.getElementById("checked").textContent = "資料讀取失敗，請重新整理";
+});
+</script>
+</body>
+</html>

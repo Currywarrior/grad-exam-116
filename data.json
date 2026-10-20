@@ -1,0 +1,125 @@
+{
+  "checked_at": "2026-10-20T12:19:20+08:00",
+  "schools": [
+    {
+      "id": "ncu",
+      "name": "中央大學",
+      "status": "out",
+      "announce": "2026-09-17",
+      "reg": [
+        "2026-11-17",
+        "2026-11-26"
+      ],
+      "exam": [
+        "2027-01-29"
+      ],
+      "release": "第一梯次 3/5 起（依系所）",
+      "note": "<b>資工類聯招</b>一次筆試可填資工系（50 名）、資工 AI 碩士班、軟體工程碩士班。考科：資料結構與演算法／離散數學與線性代數／作業系統與計算機組織，1/29 考。資管甲組考計概＋資結，網路學習所考計概（1/30）。",
+      "link": "https://admission.ncu.edu.tw/zh-TW/content/78/13"
+    },
+    {
+      "id": "nchu",
+      "name": "中興大學",
+      "status": "out",
+      "announce": "2026-10-15",
+      "annNote": "（招委會通過日）",
+      "reg": [
+        "2026-11-24",
+        "2026-12-08"
+      ],
+      "exam": [
+        "2027-02-02"
+      ],
+      "release": "3/3、3/22 兩梯次",
+      "note": "資工、電機、資料科學與資訊計算所的考科要看簡章分則。資管所考計算機概論（含程式設計）。",
+      "link": "https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.pdf"
+    },
+    {
+      "id": "ntust",
+      "name": "台科大",
+      "status": "plan",
+      "announce": "2026-11-03",
+      "reg": [
+        "2026-11-27",
+        "2026-12-10"
+      ],
+      "exam": [
+        "2027-01-25"
+      ],
+      "release": "3/12",
+      "note": "日期出自官方「116 學年度研究所招生重要日程表」，簡章 11/3 公告後確認考科。",
+      "link": "https://www.admission.ntust.edu.tw/p/406-1052-151111,r1538.php?Lang=zh-tw"
+    },
+    {
+      "id": "nsysu",
+      "name": "中山大學",
+      "status": "plan",
+      "announce": "2026-11-11",
+      "reg": [
+        "2026-12-01",
+        "2026-12-16"
+      ],
+      "exam": [
+        "2027-02-03"
+      ],
+      "release": "3/5、3/24 兩階段",
+      "note": "日期出自官方「116 學年度招生考試預定日程一覽表」。",
+      "link": "https://oaa.nsysu.edu.tw/p/406-1003-380074,r1365.php?Lang=zh-tw"
+    },
+    {
+      "id": "ntut",
+      "name": "北科大",
+      "status": "plan",
+      "announceText": "11 月中下旬",
+      "reg": null,
+      "exam": null,
+      "note": "官網只說簡章預定 11 月中下旬公告，報名與筆試日期未公布。",
+      "link": "https://graduate.ntut.edu.tw/"
+    },
+    {
+      "id": "ntu",
+      "name": "台大",
+      "status": "none",
+      "reg": null,
+      "exam": null,
+      "note": "簡章頁目前只有碩士班甄試。",
+      "link": "https://exam.aca.ntu.edu.tw/graf/brochure/"
+    },
+    {
+      "id": "nthu",
+      "name": "清大",
+      "status": "none",
+      "reg": null,
+      "exam": null,
+      "note": "資工類走台聯大系統聯招，台聯大頁面還是 115 學年度的公告。",
+      "link": "https://adms.site.nthu.edu.tw/p/412-1207-3107.php?Lang=zh-tw"
+    },
+    {
+      "id": "nycu",
+      "name": "陽明交大",
+      "status": "none",
+      "reg": null,
+      "exam": null,
+      "note": "同樣走台聯大聯招。往年參考：115 學年度 12/9～12/16 報名，過去三年都在 12 月上旬。",
+      "link": "https://exam.nycu.edu.tw/ma-me.html"
+    },
+    {
+      "id": "ncku",
+      "name": "成大",
+      "status": "none",
+      "reg": null,
+      "exam": null,
+      "note": "考試入學表格的 116 列還是空的（10/14 更新）。",
+      "link": "https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw"
+    },
+    {
+      "id": "ccu",
+      "name": "中正大學",
+      "status": "none",
+      "reg": null,
+      "exam": null,
+      "note": "目前只有甄試與學士班公告。",
+      "link": "https://exams.ccu.edu.tw/"
+    }
+  ]
+}
