@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-20T12:21:44+08:00",
+  "checked_at": "2026-10-20T12:23:02+08:00",
   "schools": [
     {
       "id": "ncu",
@@ -101,8 +101,7 @@
       "reg": null,
       "exam": null,
       "note": "同樣走台聯大聯招。往年參考：115 學年度 12/9～12/16 報名，過去三年都在 12 月上旬。",
-      "link": "https://exam.nycu.edu.tw/ma-me.html",
-      "error": "2026-10-20"
+      "link": "https://exam.nycu.edu.tw/ma-me.html"
     },
     {
       "id": "ncku",
@@ -111,8 +110,7 @@
       "reg": null,
       "exam": null,
       "note": "考試入學表格的 116 列還是空的（10/14 更新）。",
-      "link": "https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw",
-      "error": "2026-10-20"
+      "link": "https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw"
     },
     {
       "id": "ccu",
@@ -121,8 +119,7 @@
       "reg": null,
       "exam": null,
       "note": "目前只有甄試與學士班公告。",
-      "link": "https://exams.ccu.edu.tw/",
-      "error": "2026-10-20"
+      "link": "https://exams.ccu.edu.tw/"
     }
   ]
 }

@@ -12,11 +12,14 @@ from pathlib import Path
 from urllib.parse import urljoin
 
 import requests
+import urllib3
 from playwright.sync_api import sync_playwright
 from pypdf import PdfReader
 
 DATA = Path(__file__).with_name("data.json")
 TW = timezone(timedelta(hours=8))
+# 不少校網用的憑證鏈不在 Ubuntu 預設信任清單裡（GitHub Actions 上會失敗），只讀公開頁面所以略過驗證
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 TLJ = "https://adms.site.nthu.edu.tw/p/412-1207-3107.php?Lang=zh-tw"  # 台聯大聯招（清大、陽明交大資工類走這裡）
 
 # 每校要掃的頁面
@@ -90,7 +93,7 @@ def extract_dates(text):
 
 
 def pdf_text(url):
-    r = requests.get(url, timeout=60)
+    r = requests.get(url, timeout=60, verify=False)
     r.raise_for_status()
     reader = PdfReader(io.BytesIO(r.content))
     return "\n".join((p.extract_text() or "") for p in reader.pages[:12])
@@ -145,10 +148,11 @@ def main():
     now = datetime.now(TW)
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page()
+        ctx = browser.new_context(ignore_https_errors=True)
         for s in data["schools"]:
             if s["status"] == "out" or s["id"] not in PAGES:
                 continue
+            page = ctx.new_page()  # 每校一個新分頁，前一間出錯不會連帶影響
             try:
                 found = check_school(page, s["id"])
                 s.pop("error", None)
@@ -156,6 +160,8 @@ def main():
                 print(f"{s['name']}：檢查失敗 {e}")
                 s["error"] = now.date().isoformat()
                 continue
+            finally:
+                page.close()
             if not found:
                 print(f"{s['name']}：尚未公告")
                 continue
