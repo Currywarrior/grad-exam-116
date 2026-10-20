@@ -4,213 +4,318 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>116 碩考報名時程</title>
+<meta name="description" content="四大、四中、台科、北科 116 學年度碩士班考試入學的簡章公告、報名與筆試日期，每天自動檢查各校官網。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-/* 版面：上方「下一個動作」橫條 → 時間軸（報名區間＋筆試日） → 各校卡片 */
+/* 版面：方格紙底 → 標題＋筆試倒數 → 准考證票根（接下來的日期）→ 時間軸 → 依狀態分組的學校卡片 */
 :root {
-  --bg: #f5f6f8;
-  --surface: #ffffff;
-  --fg: #1c2230;
-  --muted: #5d6676;
-  --line: #dde1e8;
-  --accent: #1f4fd1;
-  --reg: #3d6ee8;
-  --exam: #c8372d;
-  --ok: #1d7f4e;
-  --ok-bg: #e2f3ea;
-  --plan: #9a6500;
-  --plan-bg: #fbefd6;
-  --none: #5d6676;
-  --none-bg: #eceef2;
-  --today: #c8372d;
-  --font-display: "Noto Serif TC", "Songti TC", serif;
-  --font-body: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --paper: #f6f7fa;
+  --grid: rgba(35, 70, 168, .06);
+  --card: #ffffff;
+  --ink: #18202f;
+  --muted: #5f6878;
+  --rule: #dfe3ea;
+  --blue: #2346a8;      /* 藍筆：報名 */
+  --blue-soft: #e6ecfb;
+  --red: #c4362b;       /* 紅筆：筆試 */
+  --red-soft: #fbe9e7;
+  --green: #1c7a4b;
+  --amber: #9a6200;
+  --grey: #7a8291;
+  --shadow: 0 1px 2px rgba(24, 32, 47, .05), 0 4px 16px rgba(24, 32, 47, .05);
+  --serif: "Noto Serif TC", "Songti TC", serif;
+  --sans: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #12151c; --surface: #1a1f29; --fg: #e6e9ef; --muted: #9aa3b2; --line: #2c3341;
-    --accent: #7ea2ff; --reg: #6f95ff; --exam: #ff7a6e;
-    --ok: #6fd3a0; --ok-bg: #173527; --plan: #f2c46b; --plan-bg: #3a2e14; --none: #9aa3b2; --none-bg: #262c38;
-    --today: #ff7a6e; color-scheme: dark;
+    --paper: #11141b; --grid: rgba(126, 162, 255, .05); --card: #191e28; --ink: #e7eaf0; --muted: #9ba3b1; --rule: #2a3140;
+    --blue: #86a6ff; --blue-soft: #1d2846; --red: #ff7d70; --red-soft: #3a1d1b;
+    --green: #6fd3a0; --amber: #f0c26a; --grey: #8d95a3;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #12151c; --surface: #1a1f29; --fg: #e6e9ef; --muted: #9aa3b2; --line: #2c3341;
-  --accent: #7ea2ff; --reg: #6f95ff; --exam: #ff7a6e;
-  --ok: #6fd3a0; --ok-bg: #173527; --plan: #f2c46b; --plan-bg: #3a2e14; --none: #9aa3b2; --none-bg: #262c38;
-  --today: #ff7a6e; color-scheme: dark;
+  --paper: #11141b; --grid: rgba(126, 162, 255, .05); --card: #191e28; --ink: #e7eaf0; --muted: #9ba3b1; --rule: #2a3140;
+  --blue: #86a6ff; --blue-soft: #1d2846; --red: #ff7d70; --red-soft: #3a1d1b;
+  --green: #6fd3a0; --amber: #f0c26a; --grey: #8d95a3;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark;
 }
-body { margin: 0;
-  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+* { box-sizing: border-box; }
+body {
+  margin: 0; color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.65;
+  background-color: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 28px 48px;
+  padding-block: 40px 56px;
 }
-.wrap { max-width: 1040px; margin: 0 auto; display: grid; gap: 28px; }
-header { display: grid; gap: 6px; }
-h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0; text-wrap: balance; letter-spacing: .02em; }
-.sub { color: var(--muted); margin: 0; }
-.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
-h2 { font-family: var(--font-display); font-size: 1.25rem; margin: 0 0 12px; }
+.wrap { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+h2 { font-family: var(--serif); font-weight: 900; font-size: 1.35rem; margin: 0; letter-spacing: .03em; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 14px; }
+.sec-head p { margin: 0; color: var(--muted); font-size: .88rem; }
 
-/* 下一個動作 */
-.next { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: baseline; }
-.next .label { font-size: .78rem; letter-spacing: .12em; color: var(--muted); }
-.next .what { font-weight: 700; font-size: 1.1rem; }
-.next .days { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 600; color: var(--accent); }
-.next-item { display: grid; gap: 2px; min-width: 0; }
+/* 標題區 */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: end; }
+.eyebrow { font-size: .8rem; letter-spacing: .2em; color: var(--blue); font-weight: 700; margin: 0 0 6px; }
+h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2rem, 5.2vw, 3.2rem); line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: .02em; }
+.lede { margin: 12px 0 0; color: var(--muted); max-width: 34em; }
+.meta { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-size: .8rem; padding: 3px 10px; border-radius: 999px; background: var(--card); border: 1px solid var(--rule); color: var(--muted); white-space: nowrap; }
+.pill b { color: var(--ink); font-weight: 600; }
+.pill .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+.countdown { text-align: right; border-left: 3px solid var(--red); padding: 4px 0 4px 20px; min-width: 0; }
+.countdown .k { font-size: .82rem; color: var(--muted); letter-spacing: .08em; }
+.countdown .n { font-family: var(--mono); font-weight: 600; font-size: clamp(3rem, 9vw, 4.6rem); line-height: 1; color: var(--red); font-variant-numeric: tabular-nums; }
+.countdown .n small { font-family: var(--sans); font-size: 1.1rem; font-weight: 500; margin-left: 4px; color: var(--ink); }
+.countdown .d { font-size: .88rem; color: var(--muted); margin-top: 6px; }
+
+/* 准考證票根 */
+.tickets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ticket { display: grid; grid-template-columns: 92px 1fr; background: var(--card); border-radius: 12px; box-shadow: var(--shadow); position: relative; min-width: 0; }
+.stub { padding: 16px 0; text-align: center; border-right: 2px dashed var(--rule); display: grid; align-content: center; gap: 2px; position: relative; }
+.stub::before, .stub::after { content: ""; position: absolute; right: -9px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); }
+.stub::before { top: -8px; } .stub::after { bottom: -8px; }
+.stub .m { font-size: .78rem; color: var(--muted); letter-spacing: .1em; }
+.stub .dd { font-family: var(--mono); font-size: 2.1rem; font-weight: 600; line-height: 1.05; }
+.stub .w { font-size: .78rem; color: var(--muted); }
+.ticket-body { padding: 14px 16px; display: grid; align-content: center; gap: 4px; min-width: 0; }
+.ticket-body .tag { font-size: .72rem; font-weight: 700; letter-spacing: .12em; }
+.ticket-body .what { font-weight: 700; font-size: 1.05rem; line-height: 1.35; }
+.ticket-body .left { font-family: var(--mono); color: var(--muted); font-size: .88rem; }
+.ticket.t-reg .stub .dd, .ticket.t-reg .tag { color: var(--blue); }
+.ticket.t-exam .stub .dd, .ticket.t-exam .tag { color: var(--red); }
+.ticket.t-ann .stub .dd, .ticket.t-ann .tag { color: var(--ink); }
 
 /* 時間軸 */
-.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .85rem; color: var(--muted); margin-bottom: 10px; }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.sw-reg { width: 22px; height: 8px; border-radius: 4px; background: var(--reg); }
-.sw-exam { width: 10px; height: 10px; transform: rotate(45deg); background: var(--exam); }
-.sw-ann { width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--accent); }
-.tl-scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
-.tl { min-width: 720px; position: relative; padding: 8px 14px 14px; }
-.tl-row { display: grid; grid-template-columns: 112px 1fr; align-items: center; height: 34px; }
-.tl-name { font-weight: 500; font-size: .9rem; white-space: nowrap; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .84rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.sw-reg { width: 24px; height: 10px; border-radius: 5px; background: var(--blue); }
+.sw-exam { width: 10px; height: 10px; transform: rotate(45deg); background: var(--red); }
+.sw-ann { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ink); }
+.tl-scroll { overflow-x: auto; background: var(--card); border-radius: 12px; box-shadow: var(--shadow); }
+.tl { min-width: 760px; position: relative; padding: 10px 18px 12px; }
+.tl-row { display: grid; grid-template-columns: 100px 1fr; align-items: center; height: 40px; position: relative; }
+.tl-row + .tl-row { border-top: 1px solid var(--rule); }
+.tl-head { height: 30px; }
+.tl-name { font-weight: 500; font-size: .9rem; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+.tl-name i { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.tl-row.dim .tl-name { color: var(--muted); }
 .tl-track { position: relative; height: 100%; }
-.tl-head .tl-track { height: 26px; }
-.month { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--line); }
-.month-label { position: absolute; top: 4px; white-space: nowrap; font-size: .75rem; color: var(--muted); padding-left: 5px; font-family: var(--font-mono); }
-.bar { position: absolute; top: 13px; height: 8px; border-radius: 4px; background: var(--reg); }
-.dia { position: absolute; top: 12px; width: 10px; height: 10px; margin-left: -5px; transform: rotate(45deg); background: var(--exam); }
-.ann { position: absolute; top: 12px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; border: 2px solid var(--accent); background: var(--surface); box-sizing: border-box; }
-.tbd { position: absolute; left: 0; top: 9px; font-size: .78rem; color: var(--muted); }
-.today { position: absolute; top: 0; bottom: 0; width: 0; border-left: 2px dashed var(--today); }
-.today-label { position: absolute; top: -2px; font-size: .72rem; color: var(--today); font-family: var(--font-mono); transform: translateX(4px); white-space: nowrap; }
-.tl-grid { position: absolute; top: 8px; bottom: 14px; left: 126px; right: 14px; pointer-events: none; }
+.month-label { position: absolute; top: 6px; font-size: .76rem; color: var(--muted); padding-left: 6px; font-family: var(--mono); white-space: nowrap; }
+.bar { position: absolute; top: 14px; height: 12px; border-radius: 6px; background: var(--blue); }
+.bar-label { position: absolute; top: 11px; font-family: var(--mono); font-size: .72rem; color: var(--blue); white-space: nowrap; padding-left: 6px; }
+.dia { position: absolute; top: 14px; width: 12px; height: 12px; margin-left: -6px; transform: rotate(45deg); background: var(--red); border-radius: 2px; }
+.dia-label { position: absolute; top: 11px; font-family: var(--mono); font-size: .72rem; color: var(--red); white-space: nowrap; padding-left: 10px; }
+.ann { position: absolute; top: 14px; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; border: 2px solid var(--ink); background: var(--card); }
+.tbd { position: absolute; top: 10px; font-size: .78rem; color: var(--muted); white-space: nowrap; }
+.tl-grid { position: absolute; top: 10px; bottom: 12px; pointer-events: none; }
+.month { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--rule); }
+.week { position: absolute; top: 30px; bottom: 0; border-left: 1px dotted var(--rule); opacity: .7; }
+.today { position: absolute; top: 0; bottom: 0; border-left: 2px solid var(--red); opacity: .85; }
+.today span { position: absolute; top: -2px; left: 4px; font-size: .7rem; font-family: var(--mono); color: var(--red); white-space: nowrap; background: var(--card); padding: 0 3px; }
 
-/* 卡片 */
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
-.card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.card h3 { margin: 0; font-size: 1.1rem; }
-.chip { font-size: .75rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; white-space: nowrap; letter-spacing: .04em; }
-.chip.out { color: var(--ok); background: var(--ok-bg); }
-.chip.plan { color: var(--plan); background: var(--plan-bg); }
-.chip.none { color: var(--none); background: var(--none-bg); }
-.chips { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-dl { margin: 0; display: grid; grid-template-columns: 5.5em 1fr; gap: 4px 10px; font-size: .92rem; }
-dt { color: var(--muted); }
-dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; min-width: 0; }
-dd.txt { font-family: var(--font-body); }
-.note { font-size: .88rem; color: var(--muted); margin: 0; }
-.note b { color: var(--fg); font-weight: 500; }
-.card a { color: var(--accent); font-size: .88rem; text-decoration: none; }
+/* 學校卡片 */
+.group + .group { margin-top: 28px; }
+.group-title { display: flex; align-items: center; gap: 10px; font-size: .86rem; font-weight: 700; letter-spacing: .1em; color: var(--muted); margin: 0 0 12px; }
+.group-title::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+.card { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 18px 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.card h3 { margin: 0; font-family: var(--serif); font-weight: 900; font-size: 1.3rem; letter-spacing: .04em; }
+.stamp { font-size: .78rem; font-weight: 900; letter-spacing: .14em; padding: 3px 9px 3px 11px; border: 2px solid currentColor; border-radius: 5px; transform: rotate(-5deg); white-space: nowrap; flex: none; margin-top: 2px; }
+.stamp.out { color: var(--green); } .stamp.plan { color: var(--amber); } .stamp.none { color: var(--grey); }
+.flags { display: flex; flex-wrap: wrap; gap: 6px; }
+.flag { font-size: .72rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); }
+.flag.warn { background: var(--red-soft); color: var(--red); }
+.dates { display: grid; gap: 8px; margin: 0; }
+.date-row { display: grid; grid-template-columns: 4.6em 1fr; gap: 10px; align-items: baseline; }
+.date-row dt { font-size: .82rem; color: var(--muted); }
+.date-row dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .95rem; min-width: 0; }
+.date-row dd.txt { font-family: var(--sans); }
+.date-row dd.na { font-family: var(--sans); color: var(--muted); }
+.date-row.reg dd:not(.na) { color: var(--blue); font-weight: 500; }
+.date-row.exam dd:not(.na) { color: var(--red); font-weight: 600; font-size: 1.05rem; }
+.note { font-size: .88rem; color: var(--muted); margin: 0; padding-top: 12px; border-top: 1px solid var(--rule); }
+.note b { color: var(--ink); font-weight: 600; }
+.card a { color: var(--blue); font-size: .86rem; text-decoration: none; font-weight: 500; justify-self: start; }
 .card a:hover, .card a:focus-visible { text-decoration: underline; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
-footer { font-size: .85rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
-@media (max-width: 480px) { dl { grid-template-columns: 5em 1fr; } .next .days { font-size: 1.5rem; } }
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 3px; }
+.card.compact { gap: 8px; }
+.card.compact .note { border-top: 0; padding-top: 0; }
+
+footer { font-size: .84rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 4px; }
+footer a { color: var(--blue); }
+
+@media (max-width: 860px) {
+  .tickets { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .hero > * { min-width: 0; }
+  .countdown { text-align: left; }
+  .cards { grid-template-columns: 1fr; }
+  body { padding-block: 28px 44px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ticket, .card { transition: transform .15s ease, box-shadow .15s ease; }
+  .card:hover { transform: translateY(-2px); }
+}
 </style>
 </head>
 <body>
-
 <div class="wrap">
-  <header>
-    <h1>116 學年度碩士班考試入學時程</h1>
-    <p class="sub">四大、四中、台科、北科的一般考試（非甄試）。每天早上 9 點自動檢查各校官網。最後檢查：<span class="mono" id="checked">讀取中</span></p>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">116 學年度 · 碩士班考試入學</p>
+      <h1>研究所筆試報名時程</h1>
+      <p class="lede">四大、四中、台科、北科的一般考試（不是甄試）。每天早上 9 點自動檢查各校官網，簡章一公告就會更新。</p>
+      <div class="meta" id="meta"><span class="pill">讀取中</span></div>
+    </div>
+    <div class="countdown" id="countdown"></div>
   </header>
 
-  <section class="next" id="next" aria-label="接下來的事"></section>
+  <section>
+    <div class="sec-head"><h2>接下來</h2><p>最近的三個日期</p></div>
+    <div class="tickets" id="tickets"></div>
+  </section>
 
   <section>
-    <h2>時間軸</h2>
-    <div class="legend">
-      <span><i class="sw-ann"></i>簡章公告</span>
-      <span><i class="sw-reg"></i>網路報名期間</span>
-      <span><i class="sw-exam"></i>筆試</span>
+    <div class="sec-head">
+      <h2>時間軸</h2>
+      <div class="legend">
+        <span><i class="sw-ann"></i>簡章公告</span>
+        <span><i class="sw-reg"></i>網路報名</span>
+        <span><i class="sw-exam"></i>筆試</span>
+      </div>
     </div>
     <div class="tl-scroll"><div class="tl" id="tl"></div></div>
   </section>
 
   <section>
-    <h2>各校細節</h2>
-    <div class="cards" id="cards"></div>
+    <div class="sec-head"><h2>各校細節</h2><p>點「官方頁面」看完整簡章</p></div>
+    <div id="groups"></div>
   </section>
 
-  <footer>日期以各校官方簡章為準。標「自動偵測」的學校是程式偵測到簡章後自動填入，標「日期待確認」表示程式沒能從簡章完整抓到日期。「預定」是學校自己公布的預定日程，正式簡章出來後可能微調；「未公布」的學校只列往年參考，不代表今年日期。</footer>
+  <footer>
+    <span>日期以各校官方簡章為準。「官方預定」是學校自己公布的預定日程，正式簡章出來後可能微調；「尚未公布」只列往年參考。</span>
+    <span>標「自動偵測」的學校是程式偵測到簡章後自動填入；標「日期待確認」表示程式沒能從簡章完整抓到日期。</span>
+  </footer>
 </div>
 
 <script>
 // 資料在 data.json，由 GitHub Actions 每天跑 check.py 更新
-fetch("data.json?t=" + Date.now()).then(r => r.json()).then(({ checked_at, schools }) => {
-  document.getElementById("checked").textContent = checked_at.slice(0, 16).replace("T", " ");
-const STATUS = { out: ["簡章已公告", "out"], plan: ["官方預定", "plan"], none: ["尚未公布", "none"] };
-const START = new Date("2026-10-15"), END = new Date("2027-03-01");
+const STATUS = {
+  out: { label: "已公告", group: "簡章已公告", color: "var(--green)" },
+  plan: { label: "預定", group: "官方預定日程", color: "var(--amber)" },
+  none: { label: "未公布", group: "尚未公布", color: "var(--grey)" },
+};
+const START = new Date(2026, 9, 15), END = new Date(2027, 2, 1);
 const DAY = 86400000;
-const pct = d => ((new Date(d) - START) / (END - START)) * 100;
-const md = d => { const x = new Date(d); return `${x.getMonth() + 1}/${x.getDate()}`; };
 const WD = "日一二三四五六";
-const mdw = d => `${md(d)}（${WD[new Date(d).getDay()]}）`;
-
-// 今天（以台灣日期為準，只取年月日）
+const parse = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const pct = d => ((d - START) / (END - START)) * 100;
+const md = d => `${d.getMonth() + 1}/${d.getDate()}`;
+const mdw = d => `${md(d)}（${WD[d.getDay()]}）`;
 const now = new Date();
 const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-const todayISO = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+const daysTo = d => Math.round((d - today) / DAY);
 
-// 時間軸
-const tl = document.getElementById("tl");
-let html = `<div class="tl-row tl-head"><div></div><div class="tl-track">`;
-for (let m = new Date(2026, 10, 1); m < END; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) {
-  html += `<span class="month-label" style="left:${pct(m)}%">${m.getMonth() + 1} 月</span>`;
-}
-html += `</div></div>`;
-for (const s of schools) {
-  html += `<div class="tl-row"><div class="tl-name">${s.name}</div><div class="tl-track">`;
-  if (s.announce) html += `<i class="ann" style="left:${pct(s.announce)}%" title="簡章公告 ${md(s.announce)}"></i>`;
-  if (s.reg) {
-    const l = pct(s.reg[0]), w = Math.max(pct(new Date(s.reg[1]).getTime() + DAY) - l, 0.6);
-    html += `<i class="bar" style="left:${l}%;width:${w}%" title="報名 ${md(s.reg[0])}–${md(s.reg[1])}"></i>`;
-  }
-  if (s.exam) for (const e of s.exam) html += `<i class="dia" style="left:${pct(e)}%" title="筆試 ${md(e)}"></i>`;
-  if (!s.reg && !s.exam) html += `<span class="tbd" style="left:${s.announceText ? "3%" : "0"}">${s.announceText ? "簡章 " + s.announceText : "日期未公布"}</span>`;
-  html += `</div></div>`;
-}
-let grid = "";
-for (let m = new Date(2026, 10, 1); m < END; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) grid += `<span class="month" style="left:${pct(m)}%"></span>`;
-if (today >= START && today <= END) grid += `<span class="today" style="left:${pct(todayISO)}%"><span class="today-label">今天 ${md(todayISO)}</span></span>`;
-tl.innerHTML = html + `<div class="tl-grid">${grid}</div>`;
-// 格線容器跟名稱欄寬度對齊
-const gridEl = tl.querySelector(".tl-grid");
-gridEl.style.left = (14 + 112) + "px";
-
-// 卡片
-document.getElementById("cards").innerHTML = schools.map(s => {
-  const [label, cls] = STATUS[s.status];
-  const rows = [];
-  if (s.announce) rows.push(["簡章公告", mdw(s.announce) + (s.annNote || ""), false]);
-  else if (s.announceText) rows.push(["簡章公告", "預定 " + s.announceText, true]);
-  rows.push(["網路報名", s.reg ? `${mdw(s.reg[0])} – ${mdw(s.reg[1])}` : "未公布", !s.reg]);
-  rows.push(["筆試", s.exam ? s.exam.map(mdw).join("、") : "未公布", !s.exam]);
-  if (s.release) rows.push(["放榜", s.release, true]);
-  return `<article class="card">
-    <div class="card-top"><h3>${s.name}</h3><span class="chips">${s.auto ? '<span class="chip plan">自動偵測</span>' : ""}${s.datesUnverified ? '<span class="chip none">日期待確認</span>' : ""}<span class="chip ${cls}">${label}</span></span></div>
-    <dl>${rows.map(([k, v, t]) => `<dt>${k}</dt><dd${t ? ' class="txt"' : ""}>${v}</dd>`).join("")}</dl>
-    <p class="note">${s.note}</p>
-    <a href="${s.link}" target="_blank" rel="noopener">官方頁面 ↗</a>
-  </article>`;
-}).join("");
-
-// 接下來的事：未來最近的三個日期
-const events = [];
-for (const s of schools) {
-  if (s.announce) events.push([s.announce, `${s.name} 簡章公告`]);
-  if (s.reg) { events.push([s.reg[0], `${s.name} 開放報名`]); events.push([s.reg[1], `${s.name} 報名截止`]); }
-  if (s.exam) for (const e of s.exam) events.push([e, `${s.name} 筆試`]);
-}
-const upcoming = events.filter(([d]) => new Date(d) >= today).sort((a, b) => new Date(a[0]) - new Date(b[0])).slice(0, 3);
-document.getElementById("next").innerHTML = upcoming.map(([d, w]) => {
-  const days = Math.round((new Date(d) - today) / DAY);
-  return `<div class="next-item"><span class="label">${mdw(d)}</span><span class="what">${w}</span><span class="days">${days === 0 ? "今天" : days + " 天"}</span></div>`;
-}).join("") || `<div class="next-item"><span class="what">目前沒有排定的日期</span></div>`;
-
-}).catch(() => {
-  document.getElementById("checked").textContent = "資料讀取失敗，請重新整理";
+fetch("data.json?t=" + Date.now()).then(r => r.json()).then(render).catch(() => {
+  document.getElementById("meta").innerHTML = `<span class="pill">資料讀取失敗，請重新整理</span>`;
 });
+
+function render({ checked_at, schools }) {
+  // 筆試撞期：同一天有兩間以上
+  const examCount = {};
+  schools.forEach(s => (s.exam || []).forEach(e => examCount[e] = (examCount[e] || 0) + 1));
+  const clash = s => (s.exam || []).some(e => examCount[e] > 1);
+
+  // 標題區的統計與倒數
+  const n = k => schools.filter(s => s.status === k).length;
+  document.getElementById("meta").innerHTML =
+    ["out", "plan", "none"].map(k => `<span class="pill"><i class="dot" style="background:${STATUS[k].color}"></i>${STATUS[k].group} <b>${n(k)}</b></span>`).join("") +
+    `<span class="pill">最後檢查 <b class="mono">${checked_at.slice(5, 16).replace("T", " ").replace("-", "/")}</b></span>`;
+
+  const exams = schools.flatMap(s => (s.exam || []).map(e => [parse(e), s.name])).filter(([d]) => d >= today).sort((a, b) => a[0] - b[0]);
+  document.getElementById("countdown").innerHTML = exams.length
+    ? `<div class="k">距離第一場筆試</div><div class="n">${daysTo(exams[0][0])}<small>天</small></div><div class="d">${mdw(exams[0][0])} ${exams.filter(([d]) => +d === +exams[0][0]).map(x => x[1]).join("、")}</div>`
+    : "";
+
+  // 准考證票根
+  const events = [];
+  schools.forEach(s => {
+    if (s.announce) events.push([parse(s.announce), "ann", "簡章公告", s.name]);
+    if (s.reg) { events.push([parse(s.reg[0]), "reg", "開放報名", s.name]); events.push([parse(s.reg[1]), "reg", "報名截止", s.name]); }
+    (s.exam || []).forEach(e => events.push([parse(e), "exam", "筆試", s.name]));
+  });
+  const upcoming = events.filter(([d]) => d >= today).sort((a, b) => a[0] - b[0]).slice(0, 3);
+  document.getElementById("tickets").innerHTML = upcoming.map(([d, cls, tag, name]) => {
+    const left = daysTo(d);
+    return `<article class="ticket t-${cls}">
+      <div class="stub"><span class="m">${d.getMonth() + 1} 月</span><span class="dd">${d.getDate()}</span><span class="w">星期${WD[d.getDay()]}</span></div>
+      <div class="ticket-body"><span class="tag">${tag}</span><span class="what">${name}</span><span class="left">${left === 0 ? "就是今天" : `還有 ${left} 天`}</span></div>
+    </article>`;
+  }).join("") || `<p>目前沒有排定的日期。</p>`;
+
+  // 時間軸
+  const order = ["out", "plan", "none"];
+  const sorted = [...schools].sort((a, b) => order.indexOf(a.status) - order.indexOf(b.status));
+  const months = [];
+  for (let m = new Date(2026, 10, 1); m < END; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) months.push(m);
+  let html = `<div class="tl-row tl-head"><div></div><div class="tl-track">${months.map(m => `<span class="month-label" style="left:${pct(m)}%">${m.getMonth() + 1} 月</span>`).join("")}</div></div>`;
+  for (const s of sorted) {
+    html += `<div class="tl-row${s.status === "none" ? " dim" : ""}"><div class="tl-name"><i style="background:${STATUS[s.status].color}"></i>${s.name}</div><div class="tl-track">`;
+    if (s.announce) html += `<i class="ann" style="left:${pct(parse(s.announce))}%" title="簡章公告 ${md(parse(s.announce))}"></i>`;
+    if (s.reg) {
+      const a = parse(s.reg[0]), b = parse(s.reg[1]);
+      const l = pct(a), r = pct(new Date(+b + DAY));
+      html += `<i class="bar" style="left:${l}%;width:${r - l}%" title="報名 ${md(a)}–${md(b)}"></i><span class="bar-label" style="left:${r}%">${md(a)}–${md(b)}</span>`;
+    }
+    (s.exam || []).forEach((e, i) => {
+      const d = parse(e);
+      html += `<i class="dia" style="left:${pct(d)}%" title="筆試 ${md(d)}"></i>`;
+      if (i === s.exam.length - 1) html += `<span class="dia-label" style="left:${pct(d)}%">${s.exam.map(x => md(parse(x))).join("、")}</span>`;
+    });
+    if (!s.reg && !s.exam) html += `<span class="tbd" style="left:${s.announceText ? pct(new Date(2026, 10, 15)) : 0}%">${s.announceText ? "簡章預定 " + s.announceText : "日期未公布"}</span>`;
+    html += `</div></div>`;
+  }
+  let grid = months.map(m => `<span class="month" style="left:${pct(m)}%"></span>`).join("");
+  for (let w = new Date(2026, 9, 19); w < END; w = new Date(+w + 7 * DAY)) if (w.getDate() > 7) grid += `<span class="week" style="left:${pct(w)}%"></span>`;
+  if (today >= START && today <= END) grid += `<span class="today" style="left:${pct(today)}%"><span>今天 ${md(today)}</span></span>`;
+  const tl = document.getElementById("tl");
+  tl.innerHTML = html + `<div class="tl-grid" style="left:${18 + 100}px;right:18px">${grid}</div>`;
+
+  // 學校卡片（依狀態分組）
+  const card = s => {
+    const rows = [];
+    if (s.announce) rows.push(["", "簡章公告", mdw(parse(s.announce)) + (s.annNote ? ` <span style="color:var(--muted);font-family:var(--sans);font-size:.8rem">${s.annNote}</span>` : ""), ""]);
+    else if (s.announceText) rows.push(["", "簡章公告", "預定 " + s.announceText, "txt"]);
+    rows.push(["reg", "網路報名", s.reg ? `${mdw(parse(s.reg[0]))} – ${mdw(parse(s.reg[1]))}` : "未公布", s.reg ? "" : "na"]);
+    rows.push(["exam", "筆試", s.exam ? s.exam.map(e => mdw(parse(e))).join("、") : "未公布", s.exam ? "" : "na"]);
+    if (s.release) rows.push(["", "放榜", s.release, "txt"]);
+    const flags = [
+      s.auto ? `<span class="flag">自動偵測</span>` : "",
+      s.datesUnverified ? `<span class="flag warn">日期待確認</span>` : "",
+      clash(s) ? `<span class="flag warn">筆試撞期</span>` : "",
+    ].join("");
+    const compact = s.status === "none";
+    return `<article class="card${compact ? " compact" : ""}">
+      <div class="card-top"><h3>${s.name}</h3><span class="stamp ${s.status}">${STATUS[s.status].label}</span></div>
+      ${flags ? `<div class="flags">${flags}</div>` : ""}
+      ${compact ? "" : `<dl class="dates">${rows.map(([c, k, v, t]) => `<div class="date-row ${c}"><dt>${k}</dt><dd class="${t}">${v}</dd></div>`).join("")}</dl>`}
+      <p class="note">${s.note}</p>
+      <a href="${s.link}" target="_blank" rel="noopener">官方頁面 ↗</a>
+    </article>`;
+  };
+  document.getElementById("groups").innerHTML = order.map(k => {
+    const list = schools.filter(s => s.status === k);
+    return list.length ? `<div class="group"><p class="group-title">${STATUS[k].group} · ${list.length}</p><div class="cards">${list.map(card).join("")}</div></div>` : "";
+  }).join("");
+}
 </script>
 </body>
 </html>
