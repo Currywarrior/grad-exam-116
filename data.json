@@ -15,7 +15,8 @@
       ],
       "release": "第一梯次 3/5 起（依系所）",
       "note": "<b>資工類聯招</b>一次筆試可填資工系（50 名）、資工 AI 碩士班、軟體工程碩士班。考科：資料結構與演算法／離散數學與線性代數／作業系統與計算機組織，1/29 考。資管甲組考計概＋資結，網路學習所考計概（1/30）。",
-      "link": "https://admission.ncu.edu.tw/zh-TW/content/78/13"
+      "link": "https://admission.ncu.edu.tw/zh-TW/content/78/13",
+      "csie": "exam"
     },
     {
       "id": "nchu",
@@ -47,8 +48,9 @@
         "2027-01-25"
       ],
       "release": "3/12",
-      "note": "<b>資工系碩士班 116 起取消筆試</b>，改為書面審查＋口試（2026-03-27 官方招生變革公告），1/25 筆試日不適用資工所，比例等簡章 11/3 公告。其他系所的筆試日期出自官方「116 學年度研究所招生重要日程表」。",
-      "link": "https://www.admission.ntust.edu.tw/p/406-1052-151111,r1538.php?Lang=zh-tw"
+      "note": "<b>資工系碩士班 116 起取消筆試</b>，改為書面審查＋口試（2026-03-27 官方招生變革公告），比例等簡章 11/3 公告。115 學年度電子甲組、資管、人工智慧跨域所也都是書審＋口試，沒有考你這六科的系所。1/25 是其他還有筆試的系所的日期。",
+      "link": "https://www.admission.ntust.edu.tw/p/406-1052-151111,r1538.php?Lang=zh-tw",
+      "csie": "review"
     },
     {
       "id": "nsysu",
@@ -82,8 +84,9 @@
       "status": "none",
       "reg": null,
       "exam": null,
-      "note": "簡章頁目前只有碩士班甄試。",
-      "link": "https://exam.aca.ntu.edu.tw/graf/brochure/"
+      "note": "簡章頁目前只有碩士班甄試。資工碩士班考試入學 115 學年度是書面審查 100%，不考筆試。",
+      "link": "https://exam.aca.ntu.edu.tw/graf/brochure/",
+      "csie": "review"
     },
     {
       "id": "nthu",

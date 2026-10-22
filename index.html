@@ -25,7 +25,8 @@
   --blue-soft: #e6ecfb;
   --red: #c4362b;       /* 紅筆：筆試 */
   --red-soft: #fbe9e7;
-  --green: #1c7a4b;
+  --green: #1c7a4b;     /* 綠：書審 */
+  --green-soft: #e2f3ea;
   --amber: #9a6200;
   --grey: #7a8291;
   --shadow: 0 1px 2px rgba(24, 32, 47, .05), 0 4px 16px rgba(24, 32, 47, .05);
@@ -37,14 +38,14 @@
   :root:not([data-theme="light"]) {
     --paper: #11141b; --grid: rgba(126, 162, 255, .05); --card: #191e28; --ink: #e7eaf0; --muted: #9ba3b1; --rule: #2a3140;
     --blue: #86a6ff; --blue-soft: #1d2846; --red: #ff7d70; --red-soft: #3a1d1b;
-    --green: #6fd3a0; --amber: #f0c26a; --grey: #8d95a3;
+    --green: #6fd3a0; --green-soft: #173326; --amber: #f0c26a; --grey: #8d95a3;
     --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #11141b; --grid: rgba(126, 162, 255, .05); --card: #191e28; --ink: #e7eaf0; --muted: #9ba3b1; --rule: #2a3140;
   --blue: #86a6ff; --blue-soft: #1d2846; --red: #ff7d70; --red-soft: #3a1d1b;
-  --green: #6fd3a0; --amber: #f0c26a; --grey: #8d95a3;
+  --green: #6fd3a0; --green-soft: #173326; --amber: #f0c26a; --grey: #8d95a3;
   --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 16px rgba(0, 0, 0, .25); color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -139,6 +140,10 @@ h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2rem, 5.2vw, 
 .flags { display: flex; flex-wrap: wrap; gap: 6px; }
 .flag { font-size: .72rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); }
 .flag.warn { background: var(--red-soft); color: var(--red); }
+/* 資工所考試方式：筆試紅、書審綠 */
+.flag.m-exam { background: var(--red); color: var(--card); }
+.flag.m-review { background: var(--green); color: var(--card); }
+.tl-name .m { font-size: .62rem; font-weight: 700; padding: 0 5px; margin-left: 4px; border-radius: 4px; color: var(--card); background: var(--green); }
 .dates { display: grid; gap: 8px; margin: 0; }
 .date-row { display: grid; grid-template-columns: 4.6em 1fr; gap: 10px; align-items: baseline; }
 .date-row dt { font-size: .82rem; color: var(--muted); }
@@ -267,7 +272,8 @@ function render({ checked_at, schools }) {
     ["out", "plan", "none"].map(k => `<span class="pill"><i class="dot" style="background:${STATUS[k].color}"></i>${STATUS[k].group} <b>${n(k)}</b></span>`).join("") +
     `<span class="pill">最後檢查 <b class="mono">${checked_at.slice(5, 16).replace("T", " ").replace("-", "/")}</b></span>`;
 
-  const exams = schools.flatMap(s => (s.exam || []).map(e => [parse(e), s.name])).filter(([d]) => d >= today).sort((a, b) => a[0] - b[0]);
+  // 資工所改書審的學校，它的筆試日是別的系所，不算進倒數
+  const exams = schools.filter(s => s.csie !== "review").flatMap(s => (s.exam || []).map(e => [parse(e), s.name])).filter(([d]) => d >= today).sort((a, b) => a[0] - b[0]);
   document.getElementById("countdown").innerHTML = exams.length
     ? `<div class="k">距離第一場筆試</div><div class="n">${daysTo(exams[0][0])}<small>天</small></div><div class="d">${mdw(exams[0][0])} ${exams.filter(([d]) => +d === +exams[0][0]).map(x => x[1]).join("、")}</div>`
     : "";
@@ -295,7 +301,7 @@ function render({ checked_at, schools }) {
   for (let m = new Date(2026, 10, 1); m < END; m = new Date(m.getFullYear(), m.getMonth() + 1, 1)) months.push(m);
   let html = `<div class="tl-row tl-head"><div></div><div class="tl-track">${months.map(m => `<span class="month-label" style="left:${pct(m)}%">${m.getMonth() + 1} 月</span>`).join("")}</div></div>`;
   for (const s of sorted) {
-    html += `<div class="tl-row${s.status === "none" ? " dim" : ""}"><div class="tl-name"><i style="background:${STATUS[s.status].color}"></i>${s.name}</div><div class="tl-track">`;
+    html += `<div class="tl-row${s.status === "none" ? " dim" : ""}"><div class="tl-name"><i style="background:${STATUS[s.status].color}"></i>${s.name}${s.csie === "review" ? `<span class="m">書審</span>` : ""}</div><div class="tl-track">`;
     if (s.announce) html += `<i class="ann" style="left:${pct(parse(s.announce))}%" title="簡章公告 ${md(parse(s.announce))}"></i>`;
     if (s.reg) {
       const a = parse(s.reg[0]), b = parse(s.reg[1]);
@@ -325,6 +331,7 @@ function render({ checked_at, schools }) {
     rows.push(["exam", "筆試", s.exam ? s.exam.map(e => mdw(parse(e))).join("、") : "未公布", s.exam ? "" : "na"]);
     if (s.release) rows.push(["", "放榜", s.release, "txt"]);
     const flags = [
+      s.csie ? `<span class="flag m-${s.csie}">資工所 ${s.csie === "review" ? "書審" : "筆試"}</span>` : "",
       s.auto ? `<span class="flag">自動偵測</span>` : "",
       s.datesUnverified ? `<span class="flag warn">日期待確認</span>` : "",
       clash(s) ? `<span class="flag warn">筆試撞期</span>` : "",
