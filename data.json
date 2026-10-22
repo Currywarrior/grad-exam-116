@@ -32,8 +32,10 @@
         "2027-02-02"
       ],
       "release": "3/3、3/22 兩梯次",
-      "note": "資工、電機、資料科學與資訊計算所的考科要看簡章分則。資管所考計算機概論（含程式設計）。",
-      "link": "https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.pdf"
+      "note": "資工、電機、資料科學與資訊計算所的考科要看簡章分則。資管所考計算機概論（含程式設計）。115 學年度資工甲組筆試：資結與演算法、計組與 OS、離散與線代。",
+      "link": "https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.pdf",
+      "csie": "exam",
+      "csieRef": "115"
     },
     {
       "id": "ntust",
@@ -65,8 +67,10 @@
         "2027-02-03"
       ],
       "release": "3/5、3/24 兩階段",
-      "note": "日期出自官方「116 學年度招生考試預定日程一覽表」。",
-      "link": "https://oaa.nsysu.edu.tw/p/406-1003-380074,r1365.php?Lang=zh-tw"
+      "note": "日期出自官方「116 學年度招生考試預定日程一覽表」。115 學年度資工甲組筆試：計算機結構、OS 與資結、離散數學（不考線代、演算法）。",
+      "link": "https://oaa.nsysu.edu.tw/p/406-1003-380074,r1365.php?Lang=zh-tw",
+      "csie": "exam",
+      "csieRef": "115"
     },
     {
       "id": "ntut",
@@ -75,8 +79,10 @@
       "announceText": "11 月中下旬",
       "reg": null,
       "exam": null,
-      "note": "官網只說簡章預定 11 月中下旬公告，報名與筆試日期未公布。",
-      "link": "https://graduate.ntut.edu.tw/"
+      "note": "官網只說簡章預定 11 月中下旬公告。115 學年度資工所筆試：計算機概論、程式設計，考試日在 3/8（比其他校晚）。",
+      "link": "https://graduate.ntut.edu.tw/",
+      "csie": "exam",
+      "csieRef": "115"
     },
     {
       "id": "ntu",
@@ -86,7 +92,8 @@
       "exam": null,
       "note": "簡章頁目前只有碩士班甄試。資工碩士班考試入學 115 學年度是書面審查 100%，不考筆試。",
       "link": "https://exam.aca.ntu.edu.tw/graf/brochure/",
-      "csie": "review"
+      "csie": "review",
+      "csieRef": "115"
     },
     {
       "id": "nthu",
@@ -94,8 +101,10 @@
       "status": "none",
       "reg": null,
       "exam": null,
-      "note": "資工類走台聯大系統聯招，台聯大頁面還是 115 學年度的公告。",
-      "link": "https://adms.site.nthu.edu.tw/p/412-1207-3107.php?Lang=zh-tw"
+      "note": "資工所 115 學年度自己招生（不是台聯大），2/5 筆試：計算機科學（資結、演算法）、計算機系統（OS、計結）、計算機數學（離散、線代），筆試 100%。",
+      "link": "https://adms.site.nthu.edu.tw/p/412-1207-3107.php?Lang=zh-tw",
+      "csie": "exam",
+      "csieRef": "115"
     },
     {
       "id": "nycu",
@@ -103,8 +112,10 @@
       "status": "none",
       "reg": null,
       "exam": null,
-      "note": "同樣走台聯大聯招。往年參考：115 學年度 12/9～12/16 報名，過去三年都在 12 月上旬。",
-      "link": "https://exam.nycu.edu.tw/ma-me.html"
+      "note": "資工類是校內「資訊聯招」（不是台聯大），115 學年度 2/4～2/5 筆試，考科含資料結構與演算法、計算機系統（OS＋計組）。往年參考：115 學年度 12/9～12/16 報名。",
+      "link": "https://exam.nycu.edu.tw/ma-me.html",
+      "csie": "exam",
+      "csieRef": "115"
     },
     {
       "id": "ncku",
@@ -112,8 +123,10 @@
       "status": "none",
       "reg": null,
       "exam": null,
-      "note": "考試入學表格的 116 列還是空的（10/14 更新）。",
-      "link": "https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw"
+      "note": "115 學年度電資學院「資訊聯招」筆試：程式設計（資結＋演算法）、計算機數學（線代＋離散）、計算機組織與系統（計組＋OS），同一次可填資工系與 AI 碩士學程。116 簡章尚未公告。",
+      "link": "https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw",
+      "csie": "exam",
+      "csieRef": "115"
     },
     {
       "id": "ccu",
@@ -121,8 +134,10 @@
       "status": "none",
       "reg": null,
       "exam": null,
-      "note": "目前只有甄試與學士班公告。",
-      "link": "https://exams.ccu.edu.tw/"
+      "note": "115 學年度資工所筆試：數學（線代、離散）、軟體設計（程設、資結、計算方法）、計算機系統（計結、OS），專業科目 100%。116 簡章尚未公告。",
+      "link": "https://exams.ccu.edu.tw/",
+      "csie": "exam",
+      "csieRef": "115"
     }
   ]
 }

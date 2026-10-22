@@ -143,8 +143,7 @@ h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2rem, 5.2vw, 
 /* 資工所考試方式：筆試紅、書審綠 */
 .flag.m-exam { background: var(--red); color: var(--card); }
 .flag.m-review { background: var(--green); color: var(--card); }
-.tl-name .m { font-size: .62rem; font-weight: 700; padding: 0 5px; margin-left: 4px; border-radius: 4px; color: var(--card); background: var(--green); }
-.dates { display: grid; gap: 8px; margin: 0; }
+.tl-name .m { font-size: .62rem; font-weight: 700; padding: 0 5px; margin-left: 4px; border-radius: 4px; color: var(--card); background: var(--green); }.dates { display: grid; gap: 8px; margin: 0; }
 .date-row { display: grid; grid-template-columns: 4.6em 1fr; gap: 10px; align-items: baseline; }
 .date-row dt { font-size: .82rem; color: var(--muted); }
 .date-row dd { margin: 0; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .95rem; min-width: 0; }
@@ -331,7 +330,7 @@ function render({ checked_at, schools }) {
     rows.push(["exam", "筆試", s.exam ? s.exam.map(e => mdw(parse(e))).join("、") : "未公布", s.exam ? "" : "na"]);
     if (s.release) rows.push(["", "放榜", s.release, "txt"]);
     const flags = [
-      s.csie ? `<span class="flag m-${s.csie}">資工所 ${s.csie === "review" ? "書審" : "筆試"}</span>` : "",
+      s.csie ? `<span class="flag m-${s.csie}">資工所 ${s.csie === "review" ? "書審" : "筆試"}${s.csieRef ? `（依 ${s.csieRef}）` : ""}</span>` : "",
       s.auto ? `<span class="flag">自動偵測</span>` : "",
       s.datesUnverified ? `<span class="flag warn">日期待確認</span>` : "",
       clash(s) ? `<span class="flag warn">筆試撞期</span>` : "",
