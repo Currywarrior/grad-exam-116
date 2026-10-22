@@ -196,7 +196,7 @@
       "status": "none",
       "reg": null,
       "exam": null,
-      "note": "115 學年度資工所筆試：數學（線代、離散）、軟體設計（程設、資結、計算方法）、計算機系統（計結、OS），專業科目 100%。116 簡章尚未公告。",
+      "note": "115 學年度資工所筆試：數學（線代、離散）、軟體設計（程設、資結、計算方法）、計算機系統（計結、OS），專業科目 100%。「計算方法」就是演算法：系上修業要點寫 Computer Algorithms，115 考古題也考 Dijkstra、KMP、articulation point、critical path；軟體設計另有 C/C++ 程式題。116 簡章尚未公告。",
       "link": "https://exams.ccu.edu.tw/",
       "csie": "exam",
       "csieRef": "115",
@@ -206,11 +206,9 @@
           "dm",
           "co",
           "ds",
+          "al",
           "os"
         ],
-        "part": {
-          "al": "簡章寫「計算方法」，沒有直接寫演算法"
-        },
         "extra": "程式設計"
       }
     }
