@@ -105,6 +105,25 @@ h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2rem, 5.2vw, 
 .sw-reg { width: 24px; height: 10px; border-radius: 5px; background: var(--blue); }
 .sw-exam { width: 10px; height: 10px; transform: rotate(45deg); background: var(--red); }
 .sw-ann { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ink); }
+/* 考科對照表 */
+.subj-scroll { overflow-x: auto; background: var(--card); border-radius: 12px; box-shadow: var(--shadow); }
+.subj { width: 100%; min-width: 620px; border-collapse: collapse; font-size: .9rem; }
+.subj th, .subj td { padding: 9px 10px; text-align: center; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+.subj tr:last-child td { border-bottom: 0; }
+.subj th { font-size: .78rem; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+.subj th:first-child, .subj td:first-child { text-align: left; font-weight: 500; position: sticky; left: 0; background: var(--card); }
+.subj td.sum { text-align: left; white-space: normal; min-width: 180px; font-size: .84rem; }
+.subj .y { color: var(--ink); font-weight: 700; }
+.subj .n { color: var(--rule); }
+.subj .p { color: var(--amber); font-weight: 700; cursor: help; }
+.subj .ref { font-size: .7rem; color: var(--muted); font-family: var(--mono); margin-left: 4px; }
+.subj tr.review td:not(:first-child):not(.sum) { color: var(--rule); }
+.tag-s { display: inline-block; font-size: .74rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; margin-right: 6px; }
+.tag-s.full { background: var(--blue-soft); color: var(--blue); }
+.tag-s.miss { background: var(--red-soft); color: var(--red); }
+.tag-s.diff { background: var(--rule); color: var(--ink); }
+.tag-s.review { background: var(--green-soft); color: var(--green); }
+.subj-foot { margin: 10px 2px 0; font-size: .82rem; color: var(--muted); }
 .tl-scroll { overflow-x: auto; background: var(--card); border-radius: 12px; box-shadow: var(--shadow); }
 .tl { min-width: 760px; position: relative; padding: 10px 18px 12px; }
 .tl-row { display: grid; grid-template-columns: 100px 1fr; align-items: center; height: 40px; position: relative; }
@@ -206,6 +225,12 @@ footer a { color: var(--blue); }
       </div>
     </div>
     <div class="tl-scroll"><div class="tl" id="tl"></div></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>資工所考科對照</h2><p>以你的六科為準</p></div>
+    <div class="subj-scroll"><table class="subj" id="subj"></table></div>
+    <p class="subj-foot">● 有考　— 沒考　△ 不確定（滑鼠移上去看原因）。標 115 的是依去年簡章，今年簡章公告後會再核對。</p>
   </section>
 
   <section>
@@ -320,6 +345,27 @@ function render({ checked_at, schools }) {
   if (today >= START && today <= END) grid += `<span class="today" style="left:${pct(today)}%"><span>今天 ${md(today)}</span></span>`;
   const tl = document.getElementById("tl");
   tl.innerHTML = html + `<div class="tl-grid" style="left:${18 + 100}px;right:18px">${grid}</div>`;
+
+  // 資工所考科對照表：六科全考 → 少考 → 考科不同 → 書審
+  const SUBJ = [["la", "線代"], ["dm", "離散"], ["co", "計組"], ["ds", "資結"], ["al", "演算法"], ["os", "OS"]];
+  const kind = s => s.csie === "review" ? 3 : !s.subj.has.length ? 2 : s.subj.has.length === 6 ? 0 : 1;
+  const rowsS = schools.filter(s => s.csie).sort((a, b) => kind(a) - kind(b) || (b.subj?.has.length || 0) - (a.subj?.has.length || 0));
+  document.getElementById("subj").innerHTML =
+    `<tr><th>學校</th>${SUBJ.map(([, n]) => `<th>${n}</th>`).join("")}<th style="text-align:left">結論</th></tr>` +
+    rowsS.map(s => {
+      const ref = s.csieRef ? `<span class="ref">${s.csieRef}</span>` : "";
+      if (s.csie === "review") return `<tr class="review"><td>${s.name}${ref}</td>${SUBJ.map(() => "<td>—</td>").join("")}<td class="sum"><span class="tag-s review">書審</span>不考筆試</td></tr>`;
+      const { has = [], part = {}, extra } = s.subj || {};
+      const cells = SUBJ.map(([k]) => has.includes(k) ? `<td class="y">●</td>` : part[k] ? `<td class="p" title="${part[k]}">△</td>` : `<td class="n">—</td>`).join("");
+      const miss = SUBJ.filter(([k]) => !has.includes(k) && !part[k]).map(([, n]) => n);
+      let sum;
+      if (!has.length) sum = `<span class="tag-s diff">考科不同</span>考${extra}`;
+      else if (!miss.length && !Object.keys(part).length) sum = `<span class="tag-s full">六科全考</span>`;
+      else sum = (miss.length ? `<span class="tag-s miss">少考 ${miss.join("、")}</span>` : `<span class="tag-s full">大致全考</span>`)
+        + Object.entries(part).map(([k, why]) => `${SUBJ.find(x => x[0] === k)[1]}：${why}`).join("；");
+      if (has.length && extra) sum += `${Object.keys(part).length ? "；" : ""}另考${extra}`;
+      return `<tr><td>${s.name}${ref}</td>${cells}<td class="sum">${sum}</td></tr>`;
+    }).join("");
 
   // 學校卡片（依狀態分組）
   const card = s => {
