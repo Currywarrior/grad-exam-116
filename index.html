@@ -123,6 +123,8 @@ h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2rem, 5.2vw, 
 .tag-s.miss { background: var(--red-soft); color: var(--red); }
 .tag-s.diff { background: var(--rule); color: var(--ink); }
 .tag-s.review { background: var(--green-soft); color: var(--green); }
+.links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+.pe-note { font-size: .78rem; color: var(--muted); }
 .subj-foot { margin: 10px 2px 0; font-size: .82rem; color: var(--muted); }
 .tl-scroll { overflow-x: auto; background: var(--card); border-radius: 12px; box-shadow: var(--shadow); }
 .tl { min-width: 760px; position: relative; padding: 10px 18px 12px; }
@@ -230,7 +232,7 @@ footer a { color: var(--blue); }
   <section>
     <div class="sec-head"><h2>資工所考科對照</h2><p>以你的六科為準</p></div>
     <div class="subj-scroll"><table class="subj" id="subj"></table></div>
-    <p class="subj-foot">● 有考　— 沒考　△ 不確定（滑鼠移上去看原因）。標 115 的是依去年簡章，今年簡章公告後會再核對。</p>
+    <p class="subj-foot">● 有考　— 沒考　△ 不確定（滑鼠移上去看原因）。標 115 的是依去年簡章，今年簡章公告後會再核對。考古題連到各校圖書館或系上的官方試題頁，陽明交大只提供紙本。</p>
   </section>
 
   <section>
@@ -347,14 +349,17 @@ function render({ checked_at, schools }) {
   tl.innerHTML = html + `<div class="tl-grid" style="left:${18 + 100}px;right:18px">${grid}</div>`;
 
   // 資工所考科對照表：六科全考 → 少考 → 考科不同 → 書審
+  const pastLink = s => s.pastExam
+    ? `<a href="${s.pastExam.url}" target="_blank" rel="noopener"${s.pastExam.note ? ` title="${s.pastExam.note}"` : ""}>${s.pastExam.note ? "紙本 ↗" : "連結 ↗"}</a>`
+    : `<span class="n">—</span>`;
   const SUBJ = [["la", "線代"], ["dm", "離散"], ["co", "計組"], ["ds", "資結"], ["al", "演算法"], ["os", "OS"]];
   const kind = s => s.csie === "review" ? 3 : !s.subj.has.length ? 2 : s.subj.has.length === 6 ? 0 : 1;
   const rowsS = schools.filter(s => s.csie).sort((a, b) => kind(a) - kind(b) || (b.subj?.has.length || 0) - (a.subj?.has.length || 0));
   document.getElementById("subj").innerHTML =
-    `<tr><th>學校</th>${SUBJ.map(([, n]) => `<th>${n}</th>`).join("")}<th style="text-align:left">結論</th></tr>` +
+    `<tr><th>學校</th>${SUBJ.map(([, n]) => `<th>${n}</th>`).join("")}<th style="text-align:left">結論</th><th>考古題</th></tr>` +
     rowsS.map(s => {
       const ref = s.csieRef ? `<span class="ref">${s.csieRef}</span>` : "";
-      if (s.csie === "review") return `<tr class="review"><td>${s.name}${ref}</td>${SUBJ.map(() => "<td>—</td>").join("")}<td class="sum"><span class="tag-s review">書審</span>不考筆試</td></tr>`;
+      if (s.csie === "review") return `<tr class="review"><td>${s.name}${ref}</td>${SUBJ.map(() => "<td>—</td>").join("")}<td class="sum"><span class="tag-s review">書審</span>不考筆試</td><td class="n">—</td></tr>`;
       const { has = [], part = {}, extra } = s.subj || {};
       const cells = SUBJ.map(([k]) => has.includes(k) ? `<td class="y">●</td>` : part[k] ? `<td class="p" title="${part[k]}">△</td>` : `<td class="n">—</td>`).join("");
       const miss = SUBJ.filter(([k]) => !has.includes(k) && !part[k]).map(([, n]) => n);
@@ -364,7 +369,7 @@ function render({ checked_at, schools }) {
       else sum = (miss.length ? `<span class="tag-s miss">少考 ${miss.join("、")}</span>` : `<span class="tag-s full">大致全考</span>`)
         + Object.entries(part).map(([k, why]) => `${SUBJ.find(x => x[0] === k)[1]}：${why}`).join("；");
       if (has.length && extra) sum += `${Object.keys(part).length ? "；" : ""}另考${extra}`;
-      return `<tr><td>${s.name}${ref}</td>${cells}<td class="sum">${sum}</td></tr>`;
+      return `<tr><td>${s.name}${ref}</td>${cells}<td class="sum">${sum}</td><td>${pastLink(s)}</td></tr>`;
     }).join("");
 
   // 學校卡片（依狀態分組）
@@ -387,7 +392,7 @@ function render({ checked_at, schools }) {
       ${flags ? `<div class="flags">${flags}</div>` : ""}
       ${compact ? "" : `<dl class="dates">${rows.map(([c, k, v, t]) => `<div class="date-row ${c}"><dt>${k}</dt><dd class="${t}">${v}</dd></div>`).join("")}</dl>`}
       <p class="note">${s.note}</p>
-      <a href="${s.link}" target="_blank" rel="noopener">官方頁面 ↗</a>
+      <div class="links"><a href="${s.link}" target="_blank" rel="noopener">官方頁面 ↗</a>${s.pastExam ? `<a href="${s.pastExam.url}" target="_blank" rel="noopener">考古題 ↗</a>${s.pastExam.note ? `<span class="pe-note">${s.pastExam.note}</span>` : ""}` : ""}</div>
     </article>`;
   };
   document.getElementById("groups").innerHTML = order.map(k => {

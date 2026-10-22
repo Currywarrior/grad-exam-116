@@ -26,6 +26,9 @@
           "al",
           "os"
         ]
+      },
+      "pastExam": {
+        "url": "https://rapid.lib.ncu.edu.tw/cexamn/"
       }
     },
     {
@@ -55,6 +58,9 @@
           "al",
           "os"
         ]
+      },
+      "pastExam": {
+        "url": "https://histud.nchu.edu.tw/"
       }
     },
     {
@@ -98,6 +104,9 @@
           "ds",
           "os"
         ]
+      },
+      "pastExam": {
+        "url": "https://lis.nsysu.edu.tw/p/412-1001-2949.php"
       }
     },
     {
@@ -114,6 +123,9 @@
       "subj": {
         "has": [],
         "extra": "計算機概論、程式設計"
+      },
+      "pastExam": {
+        "url": "https://library.ntut.edu.tw/p/412-1024-15225.php?Lang=zh-tw"
       }
     },
     {
@@ -146,6 +158,9 @@
           "al",
           "os"
         ]
+      },
+      "pastExam": {
+        "url": "https://dcs.site.nthu.edu.tw/p/404-1174-1497.php"
       }
     },
     {
@@ -167,6 +182,10 @@
           "al",
           "os"
         ]
+      },
+      "pastExam": {
+        "url": "https://www.lib.nycu.edu.tw/custom?menu=120&cid=451",
+        "note": "只有紙本，要到交大圖書館查閱"
       }
     },
     {
@@ -188,6 +207,9 @@
           "al",
           "os"
         ]
+      },
+      "pastExam": {
+        "url": "https://exam.lib.ncku.edu.tw/"
       }
     },
     {
@@ -210,6 +232,9 @@
           "os"
         ],
         "extra": "程式設計"
+      },
+      "pastExam": {
+        "url": "https://cs.ccu.edu.tw/p/404-1094-6488.php?Lang=zh-tw"
       }
     }
   ]
