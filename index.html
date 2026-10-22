@@ -58,7 +58,12 @@ body {
   padding-block: 40px 56px;
 }
 .wrap { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; position: relative; }
-.theme-btn { position: absolute; top: -12px; right: 0; display: inline-flex; align-items: center; gap: 6px; font: 500 .8rem var(--sans); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px; cursor: pointer; box-shadow: var(--shadow); }
+.top-actions { position: absolute; top: -12px; right: 0; display: flex; gap: 8px; }
+.plan-link { display: inline-flex; align-items: center; gap: 6px; font: 500 .8rem var(--sans); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px; text-decoration: none; box-shadow: var(--shadow); }
+.plan-link:hover { border-color: var(--blue); }
+@media (max-width: 640px) { .top-actions { position: static; justify-content: flex-end; margin-bottom: -24px; } }
+.plan-link svg { width: 14px; height: 14px; }
+.theme-btn { display: inline-flex; align-items: center; gap: 6px; font: 500 .8rem var(--sans); color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 999px; padding: 5px 12px; cursor: pointer; box-shadow: var(--shadow); }
 .theme-btn:hover { border-color: var(--blue); }
 .theme-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .theme-btn svg { width: 15px; height: 15px; }
@@ -201,7 +206,10 @@ footer a { color: var(--blue); }
 </head>
 <body>
 <div class="wrap">
-  <button class="theme-btn" id="theme-btn" type="button"></button>
+  <div class="top-actions">
+    <a class="plan-link" href="https://claude.ai/artifact/BqE3ARYuJy6zupULf5C2Gs" target="_blank" rel="noopener" title="私人頁面，需登入擁有者帳號"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>讀書計畫</a>
+    <button class="theme-btn" id="theme-btn" type="button"></button>
+  </div>
   <header class="hero">
     <div>
       <p class="eyebrow">116 學年度 · 碩士班考試入學</p>
