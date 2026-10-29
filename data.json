@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-28T14:39:59+08:00",
+  "checked_at": "2026-10-29T14:47:52+08:00",
   "schools": [
     {
       "id": "ncu",
@@ -142,11 +142,11 @@
     {
       "id": "nthu",
       "name": "清大",
-      "status": "none",
+      "status": "out",
       "reg": null,
       "exam": null,
-      "note": "資工所 115 學年度自己招生（不是台聯大），2/5 筆試：計算機科學（資結、演算法）、計算機系統（OS、計結）、計算機數學（離散、線代），筆試 100%。",
-      "link": "https://adms.site.nthu.edu.tw/p/412-1207-3107.php?Lang=zh-tw",
+      "note": "10/29 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
+      "link": "https://adms.site.nthu.edu.tw/p/450-1207-317112,c0.php?Lang=zh-tw",
       "csie": "exam",
       "csieRef": "115",
       "subj": {
@@ -162,16 +162,21 @@
       "pastExam": {
         "url": "https://www.lib.nthu.edu.tw/library/department/lrs/exam/eecs/cs.html",
         "note": "近 5 年資工試題都不公開"
-      }
+      },
+      "auto": true,
+      "announce": "2026-10-29",
+      "announceText": null,
+      "annNote": "（自動偵測日）",
+      "datesUnverified": true
     },
     {
       "id": "nycu",
       "name": "陽明交大",
-      "status": "none",
+      "status": "out",
       "reg": null,
       "exam": null,
-      "note": "資工類是校內「資訊聯招」（不是台聯大），一次報名可填資工、網工、多媒體、數據、資安、智慧計算等所，最多 9 個志願。115 學年度 2/4 一天筆試三科：資料結構與演算法（×1.5）、計算機系統（OS＋計組，×1.5）、線性代數與離散數學（×1）。往年參考：115 學年度 12/9～12/16 報名。",
-      "link": "https://exam.nycu.edu.tw/ma-me.html",
+      "note": "10/29 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
+      "link": "https://adms.site.nthu.edu.tw/p/450-1207-317112,c0.php?Lang=zh-tw",
       "csie": "exam",
       "csieRef": "115",
       "subj": {
@@ -187,7 +192,12 @@
       "pastExam": {
         "url": "https://www.lib.nycu.edu.tw/custom?menu=120&cid=451",
         "note": "只有紙本，要到交大圖書館查閱"
-      }
+      },
+      "auto": true,
+      "announce": "2026-10-29",
+      "announceText": null,
+      "annNote": "（自動偵測日）",
+      "datesUnverified": true
     },
     {
       "id": "ncku",
