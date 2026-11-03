@@ -20,7 +20,6 @@ DATA = Path(__file__).with_name("data.json")
 TW = timezone(timedelta(hours=8))
 # 不少校網用的憑證鏈不在 Ubuntu 預設信任清單裡（GitHub Actions 上會失敗），只讀公開頁面所以略過驗證
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-TLJ = "https://adms.site.nthu.edu.tw/p/412-1207-3107.php?Lang=zh-tw"  # 台聯大聯招（清大、陽明交大資工類走這裡）
 
 # 每校要掃的頁面
 PAGES = {
@@ -28,8 +27,8 @@ PAGES = {
     "nsysu": ["https://oaa.nsysu.edu.tw/"],
     "ntut": ["https://graduate.ntut.edu.tw/"],
     "ntu": ["https://exam.aca.ntu.edu.tw/graf/brochure/"],
-    "nthu": [TLJ, "https://adms.site.nthu.edu.tw/p/412-1207-3106.php?Lang=zh-tw"],
-    "nycu": [TLJ, "https://exam.nycu.edu.tw/ma-me.html"],
+    "nthu": ["https://adms.site.nthu.edu.tw/p/412-1207-3106.php?Lang=zh-tw"],
+    "nycu": ["https://exam.nycu.edu.tw/ma-me.html"],
     "ncku": ["https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw"],
     "ccu": ["https://exams.ccu.edu.tw/"],
 }
