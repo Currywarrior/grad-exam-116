@@ -75,7 +75,8 @@ def extract_dates(text):
             if date(2026, 10, 15) <= a <= date(2027, 1, 31) and 0 <= (b - a).days <= 40:
                 reg = [a.isoformat(), b.isoformat()]
                 break
-    for kw in re.finditer(r"筆試", t):
+    # 跳過「筆試地點(及試場分配)公告」：台科日程表上它的日期排在真正的筆試日之前
+    for kw in re.finditer(r"筆試(?!地點)", t):
         win = t[kw.start(): kw.start() + 80]
         ds = find_dates(win)
         if ds and date(2027, 1, 10) <= ds[0][0] <= date(2027, 3, 15):
