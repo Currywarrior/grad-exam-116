@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T15:37:49+08:00",
+  "checked_at": "2026-11-04T15:16:26+08:00",
   "schools": [
     {
       "id": "ncu",
@@ -145,11 +145,14 @@
     {
       "id": "nthu",
       "name": "清大",
-      "status": "none",
-      "reg": null,
+      "status": "out",
+      "reg": [
+        "2027-01-12",
+        "2027-01-26"
+      ],
       "exam": null,
-      "note": "資工所 115 學年度自己招生（不是台聯大），2/5 筆試：計算機科學（資結、演算法）、計算機系統（OS、計結）、計算機數學（離散、線代），筆試 100%。",
-      "link": "https://adms.site.nthu.edu.tw/p/412-1207-3106.php?Lang=zh-tw",
+      "note": "11/04 自動偵測到簡章公告。日期由程式從簡章擷取，請以簡章為準。",
+      "link": "https://adms.site.nthu.edu.tw/var/file/207/1207/img/813069005.pdf",
       "csie": "exam",
       "csieRef": "115",
       "subj": {
@@ -165,7 +168,12 @@
       "pastExam": {
         "url": "https://www.lib.nthu.edu.tw/library/department/lrs/exam/eecs/cs.html",
         "note": "近 5 年資工試題都不公開"
-      }
+      },
+      "auto": true,
+      "announce": "2026-11-04",
+      "announceText": null,
+      "annNote": "（自動偵測日）",
+      "datesUnverified": true
     },
     {
       "id": "nycu",
