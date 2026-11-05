@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-04T15:16:26+08:00",
+  "checked_at": "2026-11-05T15:43:48+08:00",
   "schools": [
     {
       "id": "ncu",
@@ -115,12 +115,15 @@
     {
       "id": "ntut",
       "name": "北科大",
-      "status": "plan",
-      "announceText": "11 月中下旬",
-      "reg": null,
+      "status": "out",
+      "announceText": null,
+      "reg": [
+        "2026-12-01",
+        "2026-12-10"
+      ],
       "exam": null,
-      "note": "官網只說簡章預定 11 月中下旬公告。115 學年度資工所筆試：計算機概論、程式設計，考試日在 3/8（比其他校晚）。",
-      "link": "https://graduate.ntut.edu.tw/",
+      "note": "11/05 自動偵測到簡章公告。日期由程式從簡章擷取，請以簡章為準。",
+      "link": "https://graduate.ntut.edu.tw/var/file/135/1135/img/4117/801990773.pdf",
       "csie": "exam",
       "csieRef": "115",
       "subj": {
@@ -129,7 +132,11 @@
       },
       "pastExam": {
         "url": "https://library.ntut.edu.tw/p/412-1024-15225.php?Lang=zh-tw"
-      }
+      },
+      "auto": true,
+      "announce": "2026-11-05",
+      "annNote": "（自動偵測日）",
+      "datesUnverified": true
     },
     {
       "id": "ntu",
@@ -227,11 +234,11 @@
     {
       "id": "ccu",
       "name": "中正大學",
-      "status": "none",
+      "status": "out",
       "reg": null,
       "exam": null,
-      "note": "115 學年度資工所筆試：數學（線代、離散）、軟體設計（程設、資結、計算方法）、計算機系統（計結、OS），專業科目 100%。「計算方法」就是演算法：系上修業要點寫 Computer Algorithms，115 考古題也考 Dijkstra、KMP、articulation point、critical path；軟體設計另有 C/C++ 程式題。116 簡章尚未公告。",
-      "link": "https://exams.ccu.edu.tw/",
+      "note": "11/05 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
+      "link": "https://exams.ccu.edu.tw/var/file/32/1032/img/1131/s1_course_change116.pdf",
       "csie": "exam",
       "csieRef": "115",
       "subj": {
@@ -247,7 +254,12 @@
       },
       "pastExam": {
         "url": "https://cs.ccu.edu.tw/p/404-1094-6488.php?Lang=zh-tw"
-      }
+      },
+      "auto": true,
+      "announce": "2026-11-05",
+      "announceText": null,
+      "annNote": "（自動偵測日）",
+      "datesUnverified": true
     }
   ]
 }
