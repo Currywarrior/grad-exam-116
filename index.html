@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>116 碩考報名時程</title>
-<meta name="description" content="四大、四中、台科、北科 116 學年度碩士班考試入學的簡章公告、報名與筆試日期，每天自動檢查各校官網。">
+<meta name="description" content="四大、四中、台科、北科、師大、海大 116 學年度碩士班考試入學的簡章公告、報名與筆試日期，每天自動檢查各校官網。">
 <script>
   // 在畫面出來前套用記住的主題，避免先閃一下另一個顏色
   try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
@@ -214,7 +214,7 @@ footer a { color: var(--blue); }
     <div>
       <p class="eyebrow">116 學年度 · 碩士班考試入學</p>
       <h1>研究所筆試報名時程</h1>
-      <p class="lede">四大、四中、台科、北科的一般考試（不是甄試）。每天早上 9 點自動檢查各校官網，簡章一公告就會更新。</p>
+      <p class="lede">四大、四中、台科、北科、師大、海大的一般考試（不是甄試）。每天早上 9 點自動檢查各校官網，簡章一公告就會更新。</p>
       <div class="meta" id="meta"><span class="pill">讀取中</span></div>
     </div>
     <div class="countdown" id="countdown"></div>
@@ -261,7 +261,7 @@ const STATUS = {
   plan: { label: "預定", group: "官方預定日程", color: "var(--amber)" },
   none: { label: "未公布", group: "尚未公布", color: "var(--grey)" },
 };
-const START = new Date(2026, 9, 15), END = new Date(2027, 2, 1);
+const START = new Date(2026, 9, 15), END = new Date(2027, 2, 10);
 const DAY = 86400000;
 const WD = "日一二三四五六";
 const parse = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
@@ -317,7 +317,7 @@ function render({ checked_at, schools }) {
   schools.forEach(s => {
     if (s.announce) events.push([parse(s.announce), "ann", "簡章公告", s.name]);
     if (s.reg) { events.push([parse(s.reg[0]), "reg", "開放報名", s.name]); events.push([parse(s.reg[1]), "reg", "報名截止", s.name]); }
-    (s.exam || []).forEach(e => events.push([parse(e), "exam", "筆試", s.name]));
+    (s.exam || []).forEach(e => events.push([parse(e), "exam", s.examLabel || "筆試", s.name]));
   });
   const upcoming = events.filter(([d]) => d >= today).sort((a, b) => a[0] - b[0]).slice(0, 3);
   document.getElementById("tickets").innerHTML = upcoming.map(([d, cls, tag, name]) => {
@@ -344,7 +344,7 @@ function render({ checked_at, schools }) {
     }
     (s.exam || []).forEach((e, i) => {
       const d = parse(e);
-      html += `<i class="dia" style="left:${pct(d)}%" title="筆試 ${md(d)}"></i>`;
+      html += `<i class="dia" style="left:${pct(d)}%" title="${s.examLabel || "筆試"} ${md(d)}"></i>`;
       if (i === s.exam.length - 1) html += `<span class="dia-label" style="left:${pct(d)}%">${s.exam.map(x => md(parse(x))).join("、")}</span>`;
     });
     if (!s.reg && !s.exam) html += `<span class="tbd" style="left:${s.announceText ? pct(new Date(2026, 10, 15)) : 0}%">${s.announceText ? "簡章預定 " + s.announceText : "日期未公布"}</span>`;
@@ -386,7 +386,7 @@ function render({ checked_at, schools }) {
     if (s.announce) rows.push(["", "簡章公告", mdw(parse(s.announce)) + (s.annNote ? ` <span style="color:var(--muted);font-family:var(--sans);font-size:.8rem">${s.annNote}</span>` : ""), ""]);
     else if (s.announceText) rows.push(["", "簡章公告", "預定 " + s.announceText, "txt"]);
     rows.push(["reg", "網路報名", s.reg ? `${mdw(parse(s.reg[0]))} – ${mdw(parse(s.reg[1]))}` : "未公布", s.reg ? "" : "na"]);
-    rows.push(["exam", "筆試", s.exam ? s.exam.map(e => mdw(parse(e))).join("、") : "未公布", s.exam ? "" : "na"]);
+    rows.push(["exam", s.examLabel || "筆試", s.exam ? s.exam.map(e => mdw(parse(e))).join("、") : "未公布", s.exam ? "" : "na"]);
     if (s.release) rows.push(["", "放榜", s.release, "txt"]);
     const flags = [
       s.csie ? `<span class="flag m-${s.csie}">資工所 ${s.csie === "review" ? "書審" : "筆試"}${s.csieRef ? `（依 ${s.csieRef}）` : ""}</span>` : "",
