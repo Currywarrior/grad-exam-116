@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-08T14:56:40+08:00",
+  "checked_at": "2026-11-09T15:41:13+08:00",
   "schools": [
     {
       "id": "ncu",
@@ -185,11 +185,11 @@
     {
       "id": "nycu",
       "name": "陽明交大",
-      "status": "none",
+      "status": "out",
       "reg": null,
       "exam": null,
-      "note": "資工類是校內「資訊聯招」（不是台聯大），一次報名可填資工、網工、多媒體、數據、資安、智慧計算等所，最多 9 個志願。115 學年度 2/4 一天筆試三科：資料結構與演算法（×1.5）、計算機系統（OS＋計組，×1.5）、線性代數與離散數學（×1）。往年參考：115 學年度 12/9～12/16 報名。",
-      "link": "https://exam.nycu.edu.tw/ma-me.html",
+      "note": "11/09 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
+      "link": "https://exam.nycu.edu.tw/apfiles/action.aspx?id=1f82a6dd-19b2-4982-bb0c-427f8908bd3a",
       "csie": "exam",
       "csieRef": "115",
       "subj": {
@@ -205,7 +205,12 @@
       "pastExam": {
         "url": "https://www.lib.nycu.edu.tw/custom?menu=120&cid=451",
         "note": "只有紙本，要到交大圖書館查閱"
-      }
+      },
+      "auto": true,
+      "announce": "2026-11-09",
+      "announceText": null,
+      "annNote": "（自動偵測日）",
+      "datesUnverified": true
     },
     {
       "id": "ncku",
