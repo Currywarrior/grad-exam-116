@@ -46,7 +46,7 @@
       ],
       "release": "3/3、3/22 兩梯次",
       "note": "116 學年度資工系甲組（資訊工程，31 名）筆試三科：資結與演算法、計組與作業系統、離散與線代，各 ×1，2/2 考。乙組（AI 資安，4 名）考離散與線代＋資訊系統（OS、演算法、資結、資安概論）。",
-      "link": "https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.pdf",
+      "link": "https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.aspx",
       "csie": "exam",
       "subj": {
         "has": [
@@ -96,10 +96,9 @@
         "2027-02-03"
       ],
       "release": "3/5、3/24 兩階段",
-      "note": "日期出自官方「116 學年度招生考試預定日程一覽表」。115 學年度資工甲組筆試：計算機結構、OS 與資結、離散數學（不考線代、演算法）。",
+      "note": "簡章預定 11/11 公告（官方預定日程表，仍依簡章為準）：報名 12/1～12/16、筆試 2/3、面試 3/8～15、放榜 3/5 與 3/24。11/9 查校網還沒放碩士班考試簡章。115 學年度資工甲組筆試：計算機結構、OS 與資結、離散數學（不考線代、演算法）。",
       "link": "https://oaa.nsysu.edu.tw/p/406-1003-380074,r1365.php?Lang=zh-tw",
       "csie": "exam",
-      "csieRef": "115",
       "subj": {
         "has": [
           "dm",
@@ -110,22 +109,23 @@
       },
       "pastExam": {
         "url": "https://lis.nsysu.edu.tw/p/412-1001-2949.php"
-      }
+      },
+      "csieRef": "115"
     },
     {
       "id": "ntut",
       "name": "北科大",
       "status": "out",
-      "announceText": null,
       "reg": [
         "2026-12-01",
         "2026-12-10"
       ],
-      "exam": null,
-      "note": "11/05 自動偵測到簡章公告。日期由程式從簡章擷取，請以簡章為準。",
+      "exam": [
+        "2027-02-21"
+      ],
+      "note": "116 簡章：資工所不分組 36 名，2/21 筆試只考計算機概論（13:00～14:40）與程式設計（15:30～17:10），不考資結、離散、OS，跟資工標準六科不同。報名 12/1 9:00 到 12/10 17:00。",
       "link": "https://graduate.ntut.edu.tw/var/file/135/1135/img/4117/801990773.pdf",
       "csie": "exam",
-      "csieRef": "115",
       "subj": {
         "has": [],
         "extra": "計算機概論、程式設計"
@@ -133,10 +133,9 @@
       "pastExam": {
         "url": "https://library.ntut.edu.tw/p/412-1024-15225.php?Lang=zh-tw"
       },
-      "auto": true,
       "announce": "2026-11-05",
       "annNote": "（自動偵測日）",
-      "datesUnverified": true
+      "release": "3/23"
     },
     {
       "id": "ntu",
@@ -154,14 +153,15 @@
       "name": "清大",
       "status": "out",
       "reg": [
-        "2027-01-12",
+        "2026-11-24",
+        "2026-12-01"
+      ],
+      "exam": [
         "2027-01-26"
       ],
-      "exam": null,
-      "note": "11/04 自動偵測到簡章公告。日期由程式從簡章擷取，請以簡章為準。",
+      "note": "116 簡章（招委會 10/29 通過）：資工系碩士班一般生 54 名、在職生 3 名，1/26 一天考三科：計算機科學（資結、計算方法設計）、計算機系統（OS、計結）、計算機數學（離散、線代），不可用計算器，筆試 100%。報名 11/24 10:00 到 12/1 17:00。",
       "link": "https://adms.site.nthu.edu.tw/var/file/207/1207/img/813069005.pdf",
       "csie": "exam",
-      "csieRef": "115",
       "subj": {
         "has": [
           "la",
@@ -176,22 +176,24 @@
         "url": "https://www.lib.nthu.edu.tw/library/department/lrs/exam/eecs/cs.html",
         "note": "近 5 年資工試題都不公開"
       },
-      "auto": true,
       "announce": "2026-11-04",
-      "announceText": null,
       "annNote": "（自動偵測日）",
-      "datesUnverified": true
+      "release": "3/5（資工系無複試，初試放榜即結果）"
     },
     {
       "id": "nycu",
       "name": "陽明交大",
       "status": "out",
-      "reg": null,
-      "exam": null,
-      "note": "11/09 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
-      "link": "https://exam.nycu.edu.tw/apfiles/action.aspx?id=1f82a6dd-19b2-4982-bb0c-427f8908bd3a",
+      "reg": [
+        "2026-12-08",
+        "2026-12-15"
+      ],
+      "exam": [
+        "2027-01-27"
+      ],
+      "note": "116 簡章：資工類是校內「資訊聯招」（代碼 810），一次報名最多填 8 個志願。三科全在 1/27 一天考完：資料結構與演算法、計算機系統（OS＋計組）、線性代數與離散數學。資訊科學與工程所甲組權重 1.5／1.5／1，網工所 1／1／1，多媒體所只考資結與線代離散。報名 12/8 9:00 到 12/15 17:00。",
+      "link": "https://exam.nycu.edu.tw/apfiles/getFile.aspx?type=1&id=1f82a6dd-19b2-4982-bb0c-427f8908bd3a",
       "csie": "exam",
-      "csieRef": "115",
       "subj": {
         "has": [
           "la",
@@ -206,22 +208,23 @@
         "url": "https://www.lib.nycu.edu.tw/custom?menu=120&cid=451",
         "note": "只有紙本，要到交大圖書館查閱"
       },
-      "auto": true,
       "announce": "2026-11-09",
-      "announceText": null,
-      "annNote": "（自動偵測日）",
-      "datesUnverified": true
+      "release": "3/5（第一梯次）"
     },
     {
       "id": "ncku",
       "name": "成大",
-      "status": "none",
-      "reg": null,
-      "exam": null,
-      "note": "115 學年度電資學院「資訊聯招」筆試：程式設計（資結＋演算法）、計算機數學（線代＋離散）、計算機組織與系統（計組＋OS），同一次可填資工系與 AI 碩士學程。116 簡章尚未公告。",
-      "link": "https://adms-acad.ncku.edu.tw/p/406-1044-227148,r3265.php?Lang=zh-tw",
+      "status": "out",
+      "reg": [
+        "2026-11-30",
+        "2026-12-07"
+      ],
+      "exam": [
+        "2027-01-28"
+      ],
+      "note": "116 簡章：資工系 1/28 考三節：計算機組織與系統、程式設計、計算機數學（簡章 p.46）。全校筆試 1/27～28。報名 11/30 9:00 到 12/7 中午 12:00。",
+      "link": "https://adms-acad.ncku.edu.tw/var/file/44/1044/img/4427/868509778.pdf",
       "csie": "exam",
-      "csieRef": "115",
       "subj": {
         "has": [
           "la",
@@ -234,18 +237,24 @@
       },
       "pastExam": {
         "url": "https://exam.lib.ncku.edu.tw/"
-      }
+      },
+      "announce": "2026-11-06",
+      "release": "3/2（第一梯次）"
     },
     {
       "id": "ccu",
       "name": "中正大學",
       "status": "out",
-      "reg": null,
-      "exam": null,
-      "note": "11/05 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
-      "link": "https://exams.ccu.edu.tw/var/file/32/1032/img/1131/s1_course_change116.pdf",
+      "reg": [
+        "2026-11-26",
+        "2026-12-08"
+      ],
+      "exam": [
+        "2027-01-27"
+      ],
+      "note": "116 簡章：資工系碩士班一般生 26 名、在職生 2 名，1/27 筆試三科：數學（線代、離散）、軟體設計（程式設計、資結、計算方法）、計算機系統（計結、OS）。報名 11/26 9:00 到 12/8 17:00（招生公告 PDF 寫 11/16 起，以簡章日程表 11/26 為準）。跟陽明交大同一天（1/27）考。",
+      "link": "https://exams.ccu.edu.tw/var/file/32/1032/img/1131/s1_announce.html",
       "csie": "exam",
-      "csieRef": "115",
       "subj": {
         "has": [
           "la",
@@ -255,16 +264,13 @@
           "al",
           "os"
         ],
-        "extra": "程式設計"
+        "extra": "軟體設計含程式設計"
       },
       "pastExam": {
         "url": "https://cs.ccu.edu.tw/p/404-1094-6488.php?Lang=zh-tw"
       },
-      "auto": true,
-      "announce": "2026-11-05",
-      "announceText": null,
-      "annNote": "（自動偵測日）",
-      "datesUnverified": true
+      "announce": "2026-11-06",
+      "release": "3/12（有筆試系所第二次榜示）"
     }
   ]
 }
