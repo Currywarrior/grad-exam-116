@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-10T16:01:38+08:00",
+  "checked_at": "2026-11-11T15:30:40+08:00",
   "schools": [
     {
       "id": "ncu",
@@ -86,7 +86,7 @@
     {
       "id": "nsysu",
       "name": "中山大學",
-      "status": "plan",
+      "status": "out",
       "announce": "2026-11-11",
       "reg": [
         "2026-12-01",
@@ -96,8 +96,8 @@
         "2027-02-03"
       ],
       "release": "3/5、3/24 兩階段",
-      "note": "簡章預定 11/11 公告（官方預定日程表，仍依簡章為準）：報名 12/1～12/16、筆試 2/3、面試 3/8～15、放榜 3/5 與 3/24。11/9 查校網還沒放碩士班考試簡章。115 學年度資工甲組筆試：計算機結構、OS 與資結、離散數學（不考線代、演算法）。",
-      "link": "https://oaa.nsysu.edu.tw/p/406-1003-380074,r1365.php?Lang=zh-tw",
+      "note": "11/11 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
+      "link": "https://oaa.nsysu.edu.tw/static/file/3/1003/img/424/218209643.pdf",
       "csie": "exam",
       "subj": {
         "has": [
@@ -110,7 +110,11 @@
       "pastExam": {
         "url": "https://lis.nsysu.edu.tw/p/412-1001-2949.php"
       },
-      "csieRef": "115"
+      "csieRef": "115",
+      "auto": true,
+      "announceText": null,
+      "annNote": "（自動偵測日）",
+      "datesUnverified": true
     },
     {
       "id": "ntut",
