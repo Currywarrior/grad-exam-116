@@ -5,7 +5,7 @@
       "id": "ncu",
       "name": "中央大學",
       "status": "out",
-      "announce": "2026-09-17",
+      "announce": "2026-09-09",
       "reg": [
         "2026-11-17",
         "2026-11-26"
@@ -35,8 +35,7 @@
       "id": "nchu",
       "name": "中興大學",
       "status": "out",
-      "announce": "2026-10-15",
-      "annNote": "（招委會通過日）",
+      "announce": "2026-10-20",
       "reg": [
         "2026-11-24",
         "2026-12-08"
@@ -44,7 +43,7 @@
       "exam": [
         "2027-02-02"
       ],
-      "release": "3/3、3/22 兩梯次",
+      "release": "3/3（資工系是第 1 梯次放榜）",
       "note": "116 學年度資工系甲組（資訊工程，31 名）筆試三科：資結與演算法、計組與作業系統、離散與線代，各 ×1，2/2 考。乙組（AI 資安，4 名）考離散與線代＋資訊系統（OS、演算法、資結、資安概論）。",
       "link": "https://recruit.nchu.edu.tw/grade-exam/master/116/116M_PAPER.aspx",
       "csie": "exam",
@@ -78,9 +77,7 @@
       "note": "116 學年度資工系碩士班 55 名，只收書審 50%＋口試 50%，不考筆試（簡章 p.34）；書審前 50% 名額可免口試直接錄取。1/25 的筆試日是其他系所用的。",
       "link": "https://www.admission.ntust.edu.tw/var/file/52/1052/img/2674/143224768.pdf",
       "csie": "review",
-      "auto": true,
       "announceText": null,
-      "annNote": "（自動偵測日）",
       "datesUnverified": false
     },
     {
@@ -95,26 +92,21 @@
       "exam": [
         "2027-02-03"
       ],
-      "release": "3/5、3/24 兩階段",
-      "note": "11/11 自動偵測到簡章公告。日期還沒擷取到，請看簡章。",
-      "link": "https://oaa.nsysu.edu.tw/static/file/3/1003/img/424/218209643.pdf",
+      "release": "3/5（一階段放榜，報到 3/17～3/19）",
+      "note": "116 簡章（11/11 公告）：資工系碩士班甲組一般生 28 名，2/3 筆試兩科：作業系統與資料結構（第一節）、離散數學與線性代數（第二節），不可用計算機，兩科成績加總比總分，同分先比作業系統與資料結構。甲組不考計組與演算法；乙組 10 名考計算機組織＋工程數學（含常微分方程、傅立葉級數與積分、拉氏變換、線性代數）。資訊安全碩士班 5 名考作業系統（含 20% 資安）＋離散數學與演算法。報名 12/1 12:00 到 12/16 17:00，取號後可補登錄到 12/17 17:00。筆試設臺北（臺大）與高雄兩考區。",
+      "link": "https://exam-acad.nsysu.edu.tw/exam_netlist/netlist_main.php?ExmNo=41",
       "csie": "exam",
       "subj": {
         "has": [
+          "la",
           "dm",
-          "co",
           "ds",
           "os"
         ]
       },
       "pastExam": {
         "url": "https://lis.nsysu.edu.tw/p/412-1001-2949.php"
-      },
-      "csieRef": "115",
-      "auto": true,
-      "announceText": null,
-      "annNote": "（自動偵測日）",
-      "datesUnverified": true
+      }
     },
     {
       "id": "ntut",
@@ -138,7 +130,6 @@
         "url": "https://library.ntut.edu.tw/p/412-1024-15225.php?Lang=zh-tw"
       },
       "announce": "2026-11-05",
-      "annNote": "（自動偵測日）",
       "release": "3/23"
     },
     {
@@ -181,7 +172,6 @@
         "note": "近 5 年資工試題都不公開"
       },
       "announce": "2026-11-04",
-      "annNote": "（自動偵測日）",
       "release": "3/5（資工系無複試，初試放榜即結果）"
     },
     {
