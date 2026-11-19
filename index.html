@@ -182,6 +182,16 @@ h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(2rem, 5.2vw, 
 .card a { color: var(--blue); font-size: .86rem; text-decoration: none; font-weight: 500; justify-self: start; }
 .card a:hover, .card a:focus-visible { text-decoration: underline; }
 a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 3px; }
+.alts { border-top: 1px solid var(--rule); padding-top: 10px; font-size: .86rem; min-width: 0; }
+.alts summary { cursor: pointer; font-weight: 700; color: var(--blue); }
+.alts-note { margin: 8px 0 0; color: var(--muted); }
+.alts ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+.alts li { min-width: 0; overflow-wrap: anywhere; }
+.alts li b { font-weight: 600; }
+.alts .tg { font-size: .68rem; font-weight: 700; padding: 0 6px; margin-right: 6px; border-radius: 4px; color: var(--card); background: var(--blue); white-space: nowrap; }
+.alts .tg.t-review { background: var(--green); }
+.alts .tg.t-exam { background: var(--red); }
+.alts li span.tx { color: var(--muted); display: block; margin-top: 2px; }
 .card.compact { gap: 8px; }
 .card.compact .note { border-top: 0; padding-top: 0; }
 
@@ -251,6 +261,7 @@ footer a { color: var(--blue); }
   <footer>
     <span>日期以各校官方簡章為準。「官方預定」是學校自己公布的預定日程，正式簡章出來後可能微調；「尚未公布」只列往年參考。</span>
     <span>標「自動偵測」的學校是程式偵測到簡章後自動填入；標「日期待確認」表示程式沒能從簡章完整抓到日期。</span>
+    <span>卡片裡「其他可報考系所」的標籤：「同卷」是跟資工所同一場筆試，只要多填志願；「另考」是另一份筆試；「書審」不考筆試。名額與科目讀自 116 簡章，寫「尚未核對」的以簡章為準。</span>
   </footer>
 </div>
 
@@ -400,6 +411,7 @@ function render({ checked_at, schools }) {
       ${flags ? `<div class="flags">${flags}</div>` : ""}
       ${compact ? "" : `<dl class="dates">${rows.map(([c, k, v, t]) => `<div class="date-row ${c}"><dt>${k}</dt><dd class="${t}">${v}</dd></div>`).join("")}</dl>`}
       <p class="note">${s.note}</p>
+      ${s.alts ? `<details class="alts"><summary>其他可報考系所（${s.alts.length}）</summary>${s.altNote ? `<p class="alts-note">${s.altNote}</p>` : ""}<ul>${s.alts.map(a => `<li><span class="tg ${a.tag === "書審" ? "t-review" : a.tag === "另考" ? "t-exam" : ""}">${a.tag}</span><b>${a.name}</b><span class="tx">${a.text}</span></li>`).join("")}</ul></details>` : ""}
       <div class="links"><a href="${s.link}" target="_blank" rel="noopener">官方頁面 ↗</a>${s.pastExam ? `<a href="${s.pastExam.url}" target="_blank" rel="noopener">考古題 ↗</a>${s.pastExam.note ? `<span class="pe-note">${s.pastExam.note}</span>` : ""}` : ""}</div>
     </article>`;
   };
