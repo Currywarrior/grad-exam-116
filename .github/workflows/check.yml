@@ -19,6 +19,11 @@ jobs:
       - run: pip install playwright==1.48.0 pypdf==5.1.0 requests==2.32.3
       - run: python -m playwright install --with-deps chromium
       - run: python check.py
+      - name: 有變動就通知 Discord
+        continue-on-error: true
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python notify_discord.py
       - name: 有變動就 commit
         run: |
           git config user.name "github-actions[bot]"
