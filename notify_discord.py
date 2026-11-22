@@ -32,19 +32,36 @@ def main():
         return
     old = load_old()
     new = json.load(open("data.json", encoding="utf-8"))["schools"]
-    lines = []
+    embeds = []
     for s in new:
         if clean(s) == clean(old.get(s["id"], {})):
             continue
         label = s.get("examLabel", "筆試")
-        lines.append(f"**{s['name']}** 簡章資料有更新\n報名：{fmt_range(s.get('reg'))}\n{label}：{fmt_range(s.get('exam'))}\n簡章：{s.get('link', '')}")
-    if not lines:
+        embeds.append({
+            "title": f"{s['name']} 簡章資料有更新",
+            "url": s.get("link") or PAGE,
+            "color": 0x2346A8,
+            "fields": [
+                {"name": "報名", "value": fmt_range(s.get("reg")), "inline": True},
+                {"name": label, "value": fmt_range(s.get("exam")), "inline": True},
+            ],
+        })
+    if not embeds:
         print("沒有變動，不通知")
         return
-    content = "碩考時程表偵測到變動（日期由程式擷取，請以簡章為準）\n\n" + "\n\n".join(lines) + f"\n\n完整時程表：{PAGE}"
-    r = requests.post(url, json={"content": content[:1900]}, timeout=15)
+    # 一則訊息最多 10 個 embed，最後一個留給時程表預覽圖
+    count = len(embeds)
+    embeds = embeds[:9]
+    embeds.append({
+        "title": "116 碩考報名時程",
+        "url": PAGE,
+        "description": "日期由程式從簡章擷取，請以簡章為準。",
+        "color": 0xC4362B,
+        "image": {"url": PAGE + "og-image.png"},
+    })
+    r = requests.post(url, json={"content": "碩考時程表偵測到變動", "embeds": embeds}, timeout=15)
     r.raise_for_status()
-    print(f"已通知 {len(lines)} 校")
+    print(f"已通知 {count} 校")
 
 
 if __name__ == "__main__":
